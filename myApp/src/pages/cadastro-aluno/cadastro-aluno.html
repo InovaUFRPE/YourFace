@@ -38,6 +38,16 @@
       <ion-label>Data Nascimento:</ion-label>
       <ion-input type="date" [(ngModel)]="dados.dataNascimento" class="inputDataNascimento" required></ion-input>
     </ion-item>
+    
+    <ion-item>
+      <ion-label floating>Senha:</ion-label>
+      <ion-input type="password" [(ngModel)]="dados.password" class="inputSenha" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Confirme senha:</ion-label>
+      <ion-input type="password" [(ngModel)]="dados.passwordConf" class="inputSenha" required></ion-input>
+    </ion-item>
 
   </ion-list>
 

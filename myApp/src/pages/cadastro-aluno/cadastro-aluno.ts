@@ -21,6 +21,8 @@ export class CadastroAlunoPage {
     emailConf: null,
     curso: null,
     dataNascimento: null,
+    password: null,
+    passwordConf: null
   };
   constructor(
     public navCtrl: NavController,
@@ -58,6 +60,8 @@ export class CadastroAlunoPage {
     var emailConf = this.dados.emailConf;
     var curso = this.dados.curso;
     var dataNascimento = this.dados.dataNascimento;
+    var senha = this.dados.password;
+    var SenhaConf = this.dados.passwordConf;
 
     if (name == undefined) {
       alert('O login é um campo obrigatório.');
@@ -90,6 +94,22 @@ export class CadastroAlunoPage {
     if (dataNascimento == undefined) {
       alert('O campo idade é um campo obrigatório.');
       return;
+    }if (senha == undefined) {
+      alert('A senha é um campo obrigatório.');
+      return;
+    }
+    if (SenhaConf == undefined) {
+      alert('A senha de confimação é um campo obrigatório.');
+      return;
+    }
+    if (senha.length < 8) {
+      alert('A senha deve ter pelo menos "8" caracteres.');
+      return;
+    }
+
+    if (senha !== SenhaConf) {
+      alert('As senhas não são iguais.')
+      return;
     }
 
     // Cria o objeto usuario e o cadastro no BD
@@ -98,8 +118,8 @@ export class CadastroAlunoPage {
       cpf: cpf,
       email: email,
       curso: curso,
-      dataNascimento: dataNascimento
-
+      dataNascimento: dataNascimento,
+      password: senha,
     };
     this.http.post(this.UrlApi+'alunos', usuarioEstudante, this.createRequestOptions()).map(res => res.json())
       .subscribe(res => {

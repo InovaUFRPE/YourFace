@@ -1,16 +1,12 @@
 import jwt from 'jwt-simple';
-
 import CoordenadorController from '../controllers/coordenador';
 
 export default(app)=>{
 	const coordenadorController = new CoordenadorController(app.datasource.models.Coordenador);
-
-
 	app.route('/coordenador')
-	//.all(app.auth.authenticate())
+	.all(app.auth.authenticate())
 	.get((req, res)=> {
 		coordenadorController.getAll().then(response => {
-			
 
 			
 			res.status(response.statusCode)
@@ -24,10 +20,10 @@ export default(app)=>{
 			res.json(response.data);
 		});
 	});
-
+	
 
 	app.route('/coordenador/:cpf')
-	//.all(app.auth.authenticate())
+	.all(app.auth.authenticate())
 	.get((req, res)=> {
 		coordenadorController.getById(req.params).then(response => {
 			res.status(response.statusCode)
