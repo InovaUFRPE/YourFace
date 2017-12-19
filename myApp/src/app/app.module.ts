@@ -10,6 +10,7 @@ import { IntroPageModule } from '../pages/intro/intro.module';
 import { IntroPage } from '../pages/intro/intro';
 import { CadastroPage } from '../pages/cadastro/cadastro';
 import { LoginPage } from '../pages/login/login';
+import { LoginAlunoPage } from '../pages/login-Aluno/login-Aluno';
 import { CadastroAlunoPage } from '../pages/cadastro-aluno/cadastro-aluno';
 import { RelatorioPage } from '../pages/relatorio/relatorio';
 import { InfomacaoDiretorPage } from '../pages/infomacao-diretor/infomacao-diretor';
@@ -35,6 +36,7 @@ import { ListarProfessorPage } from '../pages/listar-professor/listar-professor'
     RelatorioPage,
     HomeProfessorPage,
     LoginPage,
+    LoginAlunoPage,
     RemoverUsuariosPage,
     ListarAlunosPage,
     ListarProfessorPage
@@ -56,6 +58,7 @@ import { ListarProfessorPage } from '../pages/listar-professor/listar-professor'
     RelatorioPage,
     HomeProfessorPage,
     LoginPage,
+    LoginAlunoPage,
     RemoverUsuariosPage,
     ListarAlunosPage,
     ListarProfessorPage
