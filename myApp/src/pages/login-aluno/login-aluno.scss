@@ -1,3 +1,24 @@
 page-login-aluno {
-
+	.background {
+		overflow:hidden;
+		background-image: url('../assets/imgs/bgAluno.jpg');
+		height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+    }
+    .card{
+        top:5px;
+        height: 95%;
+		width: 90%;
+		position: absolute;
+		text-align: center;
+    }
+    img{
+        margin-top: 2%;
+        height: 30%;
+    }
+    ::-webkit-scrollbar { 
+        display: block; 
+    }
 }

@@ -17,8 +17,8 @@ export class LoginPage {
   public userCredenciais = {
     cpf: null,
     password: null
-    
   };
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
