@@ -7,17 +7,22 @@
 
 <ion-content padding>
   <ion-slides pager>
-
     <ion-slide class="intro_slide">
       <img src="assets/imgs/intro01.png" alt="">
       <h2>YouFace</h2>
       <div>
-        <br>
         <p>
           {{objetoMensagem.mensagem}}
         </p>
       </div>
-      <a (click)="goToLoginPage()">Continuar...</a>
+      <button ion-button block color="secondary" (click)="goToLoginPage()">
+        Docente
+      </button>
+
+      <button ion-button block color="primary" (click)="goToLoginPage()">
+        Discente
+      </button>
+
     </ion-slide>
 
   </ion-slides>
