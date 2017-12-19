@@ -23,6 +23,7 @@ export class HomePage {
     public navCtrl: NavController,
     public alertHomeCtrl:AlertController) {
   }
+  
 
   abrirCadastroAluno(){
     this.navCtrl.push(CadastroAlunoPage)

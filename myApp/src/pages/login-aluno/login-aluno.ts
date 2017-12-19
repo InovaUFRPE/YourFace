@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers, RequestOptions} from '@angular/http';
-import 'rxjs/add/operator/map';
+import { IonicPage, NavController, NavParams} from 'ionic-angular';
 
 
 @IonicPage()
@@ -11,11 +9,17 @@ import 'rxjs/add/operator/map';
 })
 export class LoginAlunoPage {
   UrlApi:any = 'http://localhost:3000/';
+
   public userCredenciais = {
     cpf: null,
     password: null
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  goToHomeAluno() {
+    console.log(this.userCredenciais);
+  } 
+  ionViewDidLoad() {
+    console.log('login-aluno');
   }
 }

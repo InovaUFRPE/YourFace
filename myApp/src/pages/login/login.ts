@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { CadastroPage } from '../cadastro/cadastro';
+import { Http} from '@angular/http';
 import { HomePage } from '../home/home';
-import { Http, Headers, RequestOptions} from '@angular/http';
-import 'rxjs/add/operator/map';
 import { HomeProfessorPage } from '../home-professor/home-professor';
+import 'rxjs/add/operator/map';
+
 
 @IonicPage()
 @Component({
@@ -25,8 +25,7 @@ export class LoginPage {
     public alertLoginCtrl: AlertController,
     public loadingCtrl: LoadingController,
     public http: Http
-  ) {
-  }
+  ) {}
 
   goToHomeProfessor(){
     this.http.post(this.UrlApi+'login/professores', this.userCredenciais).map(res => res.json())

@@ -7,12 +7,24 @@ page-login-aluno {
 		background-repeat: no-repeat;
 		background-size: cover;
     }
-    .card{
+    /*.card{
         top:5px;
         height: 95%;
 		width: 90%;
 		position: absolute;
 		text-align: center;
+    }*/
+    ion-card.card {
+        width: 90%;
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top:5px;
+        left: 0;
+        right: 0;
+        box-shadow: none;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.5);
     }
     img{
         margin-top: 2%;
@@ -21,4 +33,34 @@ page-login-aluno {
     ::-webkit-scrollbar { 
         display: block; 
     }
+    .item {
+        margin-bottom: 10px;
+        background: rgba(0,0, 0, 0.0);
+        border: medium none;
+
+        .text-input, {
+            color: #000;
+        }
+
+        input::-moz-placeholder  {
+            color: #fff!important;
+        }
+
+        input:-moz-placeholder {
+            color: #fff!important;
+        }
+
+        *::-webkit-input-placeholder  {
+            color: #fff!important;
+        }
+
+        *:-ms-input-placeholder  {
+            color: #fff!important;
+        }
+
+        *:-moz-placeholder  {
+            color: #fff!important;
+        }
+    }
+ 
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { List } from 'ionic-angular/components/list/list';
 import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import "rxjs/add/operator/do";
@@ -110,6 +109,11 @@ export class ListarAlunosPage {
           name: 'email',
           placeholder: 'email',
           value: user.email
+        },
+        {
+          name: 'password',
+          placeholder: 'password',
+          value: user.password
         },
  
       ],

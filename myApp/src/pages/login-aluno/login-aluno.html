@@ -17,16 +17,17 @@
           <ion-list no-line>
 
             <ion-item>
-              <ion-label floating>Cpf</ion-label>
-              <ion-input type="text" ></ion-input>
+              <ion-label floating color="dark">Cpf</ion-label>
+              <ion-input type="text" [(ngModel)]="userCredenciais.cpf" class="inputIdade" required ></ion-input>
             </ion-item>
             
             <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input type="password" ></ion-input>
+              <ion-label floating color="dark">Password</ion-label>
+              <ion-input type="password" [(ngModel)]="userCredenciais.password" class="inputIdade" required ></ion-input>
             </ion-item>
+            
+            <button ion-button block color="dark" (click)="goToHomeAluno()">Login </button>
 
-            <button ion-button block color="dark"> Login </button>
 
           </ion-list>
       </ion-card-content>
