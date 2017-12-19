@@ -16,7 +16,7 @@ export class RemoverUsuariosPage {
   UrlApi = "http://localhost:3000/";
   items: any;
   lista: any;
-
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -91,7 +91,7 @@ export class RemoverUsuariosPage {
     });
     prompt.present();
   }
-
+  
   editarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Edita Perfil',
@@ -129,7 +129,7 @@ export class RemoverUsuariosPage {
           text: 'Salvar',
           handler: data => {
             console.log('Saved clicked');
-
+   
             this.http.put(this.UrlApi+'coordenador/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
               .subscribe(res => {
                 this.inicializaLista();

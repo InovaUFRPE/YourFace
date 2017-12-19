@@ -12,12 +12,11 @@ import "rxjs/add/operator/do";
   selector: 'page-listar-alunos',
   templateUrl: 'listar-alunos.html',
 })
-
 export class ListarAlunosPage {
   UrlApi = "http://localhost:3000/";
   items: any;
   lista: any;
-
+  
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -93,7 +92,6 @@ export class ListarAlunosPage {
     });
     prompt.present();
   }
-
   editarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Edita Perfil',
@@ -113,7 +111,7 @@ export class ListarAlunosPage {
           placeholder: 'email',
           value: user.email
         },
-
+ 
       ],
       buttons: [
         {
@@ -126,7 +124,7 @@ export class ListarAlunosPage {
         {
           text: 'Salvar',
           handler: data => {
-
+    
             this.http.put(this.UrlApi+'alunos/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
               .subscribe(res => {
                 this.inicializaLista();

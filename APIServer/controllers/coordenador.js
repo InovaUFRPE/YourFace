@@ -15,7 +15,6 @@ class CoordenadorController{
 		this.Coordenador = Coordenador;
 	}
 	getAll(){
-<<<<<<< HEAD
 
 		/*	response.data.forEach(function (item) {
 		//console.log(item);
@@ -25,9 +24,6 @@ class CoordenadorController{
 
 
 		return this.Coordenador.findAll({where: {"ativo":true}})
-=======
-		return this.Coordenador.findAll({})
->>>>>>> 41dbc599341086fb98c2311c62b0e6e84d3516c8
 		.then(result => defaultResponse(result))
 		.catch(error => errorResponse(error.message));
 	}
@@ -43,17 +39,13 @@ class CoordenadorController{
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
 	}
 	update(data, params){
-<<<<<<< HEAD
 		console.log(data)
-=======
->>>>>>> 41dbc599341086fb98c2311c62b0e6e84d3516c8
 		return this.Coordenador.update(data,{where:params})
 		.then(result=> defaultResponse(result))
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
 	}
 
 	delete(params){
-<<<<<<< HEAD
 
 
 		return this.Coordenador.update({"ativo":false} ,{where:params})
@@ -67,11 +59,6 @@ class CoordenadorController{
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));	
 
 		*/
-=======
-		return this.Coordenador.destroy({where: params})
-		.then(result => defaultResponse(result, httpStatus.NO_CONTENT))
-		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));	
->>>>>>> 41dbc599341086fb98c2311c62b0e6e84d3516c8
 	}
 }
 

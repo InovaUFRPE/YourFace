@@ -54,7 +54,7 @@ export class ListarProfessorPage {
       })
     }
   }
-
+  
   deletarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Deletar professor!',

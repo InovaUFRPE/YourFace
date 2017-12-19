@@ -10,12 +10,9 @@ export default(app)=>{
 	.all(app.auth.authenticate())
 	.get((req, res)=> {
 		coordenadorController.getAll().then(response => {
-<<<<<<< HEAD
 			
 
 			
-=======
->>>>>>> 41dbc599341086fb98c2311c62b0e6e84d3516c8
 			res.status(response.statusCode)
 			res.json(response.data)
 		});
