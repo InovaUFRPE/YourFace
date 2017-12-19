@@ -40,7 +40,19 @@ export default  (sequelize, DataTypes) => {
 			allowNull: false,
 			primaryKey: true
 		},
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		}
 	}, {
-		tableName: 'Aluno'
+		tableName: 'Aluno',
+		hooks: {
+			beforeCreate: user => {
+				user.set('password', bcrypt.hashSync(user.password, bcrypt.genSaltSync()));
+			}
+		},
 	});
 };

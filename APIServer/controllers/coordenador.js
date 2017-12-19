@@ -1,4 +1,5 @@
 import httpStatus from 'http-status';
+import bcrypt from 'bcrypt';
 
 const defaultResponse = (data, statusCode = httpStatus.OK) => ({
 	data,
@@ -39,7 +40,7 @@ class CoordenadorController{
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
 	}
 	update(data, params){
-		console.log(data)
+		data.password = bcrypt.hashSync(data.password, bcrypt.genSaltSync());
 		return this.Coordenador.update(data,{where:params})
 		.then(result=> defaultResponse(result))
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
