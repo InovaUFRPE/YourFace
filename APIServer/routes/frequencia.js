@@ -65,5 +65,12 @@ export default(app)=>{
 	});
 
 
-	
+	app.route('/alunos_frequencia/:cpf_aluno')
+	.get((req, res)=> {
+		frequenciaController.getAllById(req.params).then(response => {
+			res.status(response.statusCode)
+			res.json(response.data)
+		});
+
+	})
 }

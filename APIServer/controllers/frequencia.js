@@ -18,6 +18,11 @@ class FrequenciaController{
 		.then(result => defaultResponse(result))
 		.catch(error => errorResponse(error.message));
 	}
+	getAllById(params){
+		return this.Frequencia.findAll({where: params})
+		.then(result => defaultResponse(result))
+		.catch(error => errorResponse(error.message));
+	}
 	getById(params){
 		return this.Frequencia.findOne({where: params})
 		.then(result => defaultResponse(result))

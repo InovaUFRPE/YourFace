@@ -29,6 +29,8 @@ export class ServiceProvider {
       });
     });
   }
+
+
   deleteApi(UrlApi) {
     return new Promise(resolve => {
       this.http.delete(UrlApi, this.createRequestOptions()).subscribe(data => {
@@ -58,6 +60,15 @@ export class ServiceProvider {
     });
   }
 
+  getApiFrequencia(UrlApi) {
+    return new Promise(resolve => {
+      this.http.get(UrlApi).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
 
   private createRequestOptions() {
     let headers = new Headers();
