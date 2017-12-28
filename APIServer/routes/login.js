@@ -5,8 +5,10 @@ import bcrypt from 'bcrypt';
 export default(app)=>{
 
 	const config = app.config;
+	
 	const Coordenador = app.datasource.models.Coordenador;
 	const Profe = app.datasource.models.Professor;
+	const aluno = app.datasource.models.Aluno;
 
 	app.route('/login/professores')
 	.post((req, res)=>{
@@ -59,15 +61,19 @@ export default(app)=>{
 		}
 	});
 
+	app.route('/login/alunos').post((req, res)=>{
+		const cpf = req.body.cpf;
+		const password = req.body.password;
 
+		aluno.findOne({ where: { cpf } }).then(user => {
+			if (user.password == password) {
+				res.json({success: true, token: cpf});
+			}else{
+				res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
+			}
 
-	app.route('/teste')
-	.all(app.auth.authenticate())
-	.get((req, res) => {
-		console.log(req.headers.authorization);
-		console.log("Validou");
-		res.send({teste:"Validou"});
-	})
+		})
+	});
 
 
 }
