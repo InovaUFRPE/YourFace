@@ -7,17 +7,7 @@ import "rxjs/add/operator/do";
 export class ServiceProvider {
 
   constructor(public http: Http) {
-    console.log('Hello ServiceProvider Provider');
-  }
-
-  putApi(UrlApi, data) {
-    return new Promise((resolve, reject) => {
-      this.http.put(UrlApi, data, this.createRequestOptions()).subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
+    console.log('Teste de Provaider APIRestFull');
   }
 
   postApi(UrlApi, data) {
@@ -48,6 +38,26 @@ export class ServiceProvider {
       });
     });
   }
+  putApi(UrlApi, data) {
+    return new Promise((resolve, reject) => {
+      this.http.put(UrlApi, data, this.createRequestOptions()).subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  posLogintApi(UrlApi, data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(UrlApi, data, this.createRequestOptions()).subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
 
   private createRequestOptions() {
     let headers = new Headers();

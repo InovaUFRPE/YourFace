@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { Http} from '@angular/http';
-import { HomePage } from '../home/home';
 import { HomeProfessorPage } from '../home-professor/home-professor';
-import 'rxjs/add/operator/map';
+import { HomePage } from '../home/home';
+import { ServiceProvider } from '../../providers/service/service';
+
 
 @IonicPage()
 @Component({
@@ -17,46 +17,44 @@ export class LoginPage {
     cpf: null,
     password: null
   };
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertLoginCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public http: Http
+    public restProvider: ServiceProvider
   ) {}
 
-
-
   goToHomeProfessor(){
-    this.http.post(this.UrlApi+'login/professores', this.userCredenciais).map(res => res.json())
-      .subscribe(res => {
-        console.log(res)
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-          this.showAlert()
-          this.navCtrl.push(HomeProfessorPage);
-        } else {
-          this.showAlertErro()
-        }
-      }, (error) => {
-        console.log("erro " + error);
-      });
+    this.restProvider.posLogintApi(this.UrlApi+'login/professores', this.userCredenciais).then((result) => {
+      const Professor = JSON.parse(result['_body']);
+      if (Professor.token) {
+        localStorage.setItem("token", Professor.token);
+        this.showAlert()
+        this.navCtrl.push(HomeProfessorPage);
+      }else{
+        console.log("erro ", Professor.message);
+        this.showAlertErro()
+      }
+    }, (err) => {
+      console.log("Erro", err);
+    });
   }  
   goToHomeCoordenador() {
-    this.http.post(this.UrlApi+'login/coordenador', this.userCredenciais).map(res => res.json())
-      .subscribe(res => {
-        console.log(res)
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-          this.showAlert()
-          this.navCtrl.push(HomePage);
-        }else{
-          this.showAlertErro()
-        }
-      }, (error) => {
-        console.log("erro " + error);
-      });
+    this.restProvider.posLogintApi(this.UrlApi+'login/coordenador', this.userCredenciais).then((result) => {
+      const Professor = JSON.parse(result['_body']);
+      if (Professor.token) {
+        localStorage.setItem("token", Professor.token);
+        this.showAlert()
+        this.navCtrl.push(HomePage);
+      }else{
+        console.log("erro ", Professor.message);
+        this.showAlertErro()
+      }
+    }, (err) => {
+      console.log("Erro", err);
+    });
   }
 
   showAlert() {

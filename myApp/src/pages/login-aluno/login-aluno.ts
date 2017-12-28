@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
-import { Http} from '@angular/http';
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -15,28 +15,24 @@ export class LoginAlunoPage {
     password: null
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: Http) {}
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public restProvider: ServiceProvider
+  ) {}
 
   goToHomeAluno() {
-    this.http.post(this.UrlApi+'login/alunos', this.userCredenciais).map(res => res.json())
-      .subscribe(res => {
-        console.log(res)
-        if (res.token) {
-          localStorage.setItem("token", res.token);
-          console.log("Usuario LOgado");
-        } else {
-          console.log("erro " ,res.message);
-        }
-
-
-      }, (error) => {
-        console.log("erro " + error);
-      });
-
-
-    console.log(this.userCredenciais);
+    this.restProvider.posLogintApi(this.UrlApi+'login/alunos', this.userCredenciais).then((result) => {
+      const alunoLogado = JSON.parse(result['_body']);
+      if (alunoLogado.token) {
+        localStorage.setItem("token", alunoLogado.token);
+      }else{
+        console.log("erro ", alunoLogado.message);
+      }
+    }, (err) => {
+      console.log("Erro", err);
+    });
+    
   } 
-  ionViewDidLoad() {
-    console.log('login-aluno');
-  }
+  ionViewDidLoad() {}
 }
