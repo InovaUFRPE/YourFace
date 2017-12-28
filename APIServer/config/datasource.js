@@ -31,13 +31,22 @@ export default (app) => {
 		database.models = loadModels(sequelize);
 		sequelize.sync().done(() => {
 			database;
+			
+			database['models']['Coordenador'].findOne({where: {cpf:'123'}})
+			.then(result => console.log(result['_previousDataValues'])).catch(() =>{
+				database['models']['Coordenador'].create({
+					name: 'admin',
+					email: 'admin@admin',
+					password:'123',
+					cpf:'123'
+				});
+			});
 			let sql = `CREATE VIEW IF NOT EXISTS frequencia_turma_Aluno AS
 			SELECT aluno.name, aluno.cpf, frequencia.presenca, frequencia.data, frequencia.id_freq, turmas.name_turma FROM frequencia 
 			LEFT JOIN aluno ON (frequencia.cpf_aluno = aluno.cpf) 
 			LEFT JOIN turmas_alunos ON (frequencia.cpf_aluno = turmas_alunos.cpf_aluno) 
 			LEFT JOIN turmas ON (turmas_alunos.id_turma = turmas.id_turma);`;
-			sequelize.query(sql).then(ratings =>{});
-			
+			sequelize.query(sql).then(ratings =>{});		
 		});
 	}
 	return database;
