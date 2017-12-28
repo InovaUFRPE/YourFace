@@ -66,7 +66,7 @@ export default(app)=>{
 		const password = req.body.password;
 
 		aluno.findOne({ where: { cpf } }).then(user => {
-			if (user.password == password) {
+			if (bcrypt.compareSync(password, user.password)) {
 				res.json({success: true, token: cpf});
 			}else{
 				res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})

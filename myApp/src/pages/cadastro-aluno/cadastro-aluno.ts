@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Http, Headers, RequestOptions} from '@angular/http';
-import 'rxjs/add/operator/map';
-import "rxjs/add/operator/do";
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -28,7 +26,7 @@ export class CadastroAlunoPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCadastroCtrl: AlertController,
-    public http: Http) {
+    public restProvider: ServiceProvider) {
   }
 
   TestaCPF(strCPF) {
@@ -121,17 +119,15 @@ export class CadastroAlunoPage {
       dataNascimento: dataNascimento,
       password: senha,
     };
-    this.http.post(this.UrlApi+'alunos', usuarioEstudante, this.createRequestOptions()).map(res => res.json())
-      .subscribe(res => {
-        if (res.error) {
-          this.showAlertErro()
-        } else {
-          this.showAlert()
-          this.navCtrl.setRoot(HomePage);;
-        }
-      }, (error) => {
-        console.log("erro " + error);
-      });
+
+    this.restProvider.postApi(this.UrlApi+'alunos', usuarioEstudante).then((result) => {
+      console.log(result);
+      this.showAlert();
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      this.showAlertErro();
+    });
   }
 
   goToHomePage2() {
@@ -153,11 +149,5 @@ export class CadastroAlunoPage {
       buttons: ['OK']
     });
     alert.present();
-  }
-  private createRequestOptions() {
-    let headers = new Headers();
-    headers.append("Authorization", 'JWT '+ localStorage.getItem("token"));
-    headers.append("Content-Type", "application/json");
-    return new RequestOptions({ headers: headers });
   }
 }
