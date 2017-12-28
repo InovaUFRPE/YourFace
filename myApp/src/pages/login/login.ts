@@ -5,7 +5,6 @@ import { HomePage } from '../home/home';
 import { HomeProfessorPage } from '../home-professor/home-professor';
 import 'rxjs/add/operator/map';
 
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -27,6 +26,8 @@ export class LoginPage {
     public http: Http
   ) {}
 
+
+
   goToHomeProfessor(){
     this.http.post(this.UrlApi+'login/professores', this.userCredenciais).map(res => res.json())
       .subscribe(res => {
@@ -38,8 +39,6 @@ export class LoginPage {
         } else {
           this.showAlertErro()
         }
-
-
       }, (error) => {
         console.log("erro " + error);
       });
@@ -55,8 +54,6 @@ export class LoginPage {
         }else{
           this.showAlertErro()
         }
-
-
       }, (error) => {
         console.log("erro " + error);
       });

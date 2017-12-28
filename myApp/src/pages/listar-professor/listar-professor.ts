@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Http, Headers, RequestOptions} from '@angular/http';
-import { List } from 'ionic-angular/components/list/list';
-import 'rxjs/add/operator/map';
-import "rxjs/add/operator/do";
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -20,20 +17,15 @@ export class ListarProfessorPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public http: Http) {
-    this.inicializaLista();
-  }
+    public restProvider: ServiceProvider) {this.inicializaLista();}
 
   inicializaLista() {
-    this.http.get(this.UrlApi+'professores',this.createRequestOptions()).map(res => res.json())
-      .subscribe(res => {
-        this.lista = res;
-        if (res[0]!= null) {
-          this.initializeItems();
-        }
-      }, (error) => {
-        console.error("erro " + error);
-      });
+    this.restProvider.getApi(this.UrlApi+'professores').then(data => {
+      this.lista = JSON.parse(data['_body']);
+      if (this.lista[0]!= null) {
+        this.initializeItems();
+      }
+    });
   }
 
   initializeItems() {
@@ -76,13 +68,11 @@ export class ListarProfessorPage {
         {
           text: 'Deletar',
           handler: data => {
-            console.log('Deletar clicked');
-            this.http.delete(this.UrlApi+'professores/' + data.cpf, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.error("erro " + error);
-              });
+            this.restProvider.deleteApi(this.UrlApi+'professores/' + data.cpf).then(data => {
+              this.inicializaLista();
+            }, (err) => {
+              console.log(err);
+            });
           }
         }
       ]
@@ -129,28 +119,15 @@ export class ListarProfessorPage {
         {
           text: 'Salvar',
           handler: data => {
-            console.log('Saved clicked');
-
-
-            this.http.put(this.UrlApi+'professores/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.log("erro " + error);
-              });
+            this.restProvider.putApi(this.UrlApi+'professores/'+data.cpf, data).then((result) => {
+              this.inicializaLista();
+            }, (err) => {
+              console.log(err);
+            });
           }
         }
       ]
     });
     prompt.present();
   }
-
-  private createRequestOptions() {
-    let headers = new Headers();
-    headers.append("Authorization", 'JWT '+ localStorage.getItem("token"));
-    headers.append("Content-Type", "application/json");
-    return new RequestOptions({ headers: headers });
-  }
-
-
 }

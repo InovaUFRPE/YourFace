@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Http, Headers, RequestOptions} from '@angular/http';
-import 'rxjs/add/operator/map';
-import "rxjs/add/operator/do";
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -47,7 +45,7 @@ export class CadastroProfessorPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCadastroCtrl: AlertController,
-    public http: Http) {
+    public restProvider: ServiceProvider) {
   }
   fazerCadastroProfessor(): boolean {
     // Pega as informações do usuário
@@ -108,20 +106,14 @@ export class CadastroProfessorPage {
       password: senha,
       email: email
     };
-    this.http.post(this.UrlApi+'professores', usuarioProfessor, this.createRequestOptions()).map(res => res.json())
-      .subscribe(res => {
-        console.log(res);
-        if (res.error) {
-          console.log(usuarioProfessor)
-          this.showAlertErro()
-        } else {
-          this.showAlert()
-          this.navCtrl.setRoot(HomePage);;
-        }
-      }, (error) => {
-        console.log(usuarioProfessor)
-        console.log("erro " + error);
-      });
+    this.restProvider.postApi(this.UrlApi+'professores', usuarioProfessor).then((result) => {
+      console.log(result);
+      this.showAlert();
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      this.showAlertErro();
+    });
   }
 
   goToHomePage2() {
@@ -145,12 +137,4 @@ export class CadastroProfessorPage {
     });
     alert.present();
   }
-
-  private createRequestOptions() {
-    let headers = new Headers();
-    headers.append("Authorization", 'JWT '+ localStorage.getItem("token"));
-    headers.append("Content-Type", "application/json");
-    return new RequestOptions({ headers: headers });
-  }
-
 }

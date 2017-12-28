@@ -16,7 +16,17 @@ export class ServiceProvider {
   constructor(public http: Http) {
     console.log('Hello ServiceProvider Provider');
   }
-  
+
+  putApi(UrlApi, data) {
+    return new Promise((resolve, reject) => {
+      this.http.put(UrlApi, data, this.createRequestOptions()).subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   postApi(UrlApi, data) {
     return new Promise((resolve, reject) => {
       this.http.post(UrlApi, data, this.createRequestOptions()).subscribe(res => {
@@ -26,9 +36,19 @@ export class ServiceProvider {
         });
     });
   }
+
   getApi(UrlApi) {
     return new Promise(resolve => {
       this.http.get(UrlApi, this.createRequestOptions()).subscribe(data => {
+        resolve(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+  deleteApi(UrlApi) {
+    return new Promise(resolve => {
+      this.http.delete(UrlApi, this.createRequestOptions()).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
