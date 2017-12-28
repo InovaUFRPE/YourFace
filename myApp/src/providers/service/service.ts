@@ -1,15 +1,8 @@
 import { Injectable } from '@angular/core';
-
 import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import "rxjs/add/operator/do";
 
-/*
-  Generated class for the ServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class ServiceProvider {
 
