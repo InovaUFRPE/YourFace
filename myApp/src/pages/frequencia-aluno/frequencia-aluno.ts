@@ -18,10 +18,11 @@ export class FrequenciaAlunoPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FrequenciaAlunoPage');
+    /*
     this.restProvider.getApi(this.UrlApi+'professores').then(data => {
       const lista = JSON.parse(data['_body']);
       if (lista[0]!= null) {}
-    });
+    });*/
   }
 
 }

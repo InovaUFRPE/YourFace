@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams} from 'ionic-angular';
+
+import { HomePage } from '../home/home';
+import { FrequenciaAlunoPage } from '../frequencia-aluno/frequencia-aluno';
+
 import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
@@ -8,7 +12,7 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'login-aluno.html',
 })
 export class LoginAlunoPage {
-  UrlApi:any = 'http://localhost:3000/';
+  UrlApi:any = 'http://localhost:3000/login/alunos';
 
   public userCredenciais = {
     cpf: null,
@@ -22,10 +26,12 @@ export class LoginAlunoPage {
   ) {}
 
   goToHomeAluno() {
-    this.restProvider.posLogintApi(this.UrlApi+'login/alunos', this.userCredenciais).then((result) => {
+    this.restProvider.posLogintApi(this.UrlApi, this.userCredenciais).then((result) => {
       const alunoLogado = JSON.parse(result['_body']);
       if (alunoLogado.token) {
         localStorage.setItem("token", alunoLogado.token);
+        console.log(alunoLogado);
+        this.navCtrl.push(FrequenciaAlunoPage);
       }else{
         console.log("erro ", alunoLogado.message);
       }
@@ -34,5 +40,5 @@ export class LoginAlunoPage {
     });
     
   } 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {console.log("Pagina do aluno")}
 }
