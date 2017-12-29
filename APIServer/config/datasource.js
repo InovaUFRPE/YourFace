@@ -29,7 +29,7 @@ export default (app) => {
 			models:{}
 		}
 		database.models = loadModels(sequelize);
-		/*
+	
 		sequelize.sync().done(() => {
 			database;
 			
@@ -48,7 +48,7 @@ export default (app) => {
 			LEFT JOIN turmas_alunos ON (frequencia.cpf_aluno = turmas_alunos.cpf_aluno) 
 			LEFT JOIN turmas ON (turmas_alunos.id_turma = turmas.id_turma);`;
 			sequelize.query(sql).then(ratings =>{});		
-		});*/
+		});
 	}
 	return database;
 }
