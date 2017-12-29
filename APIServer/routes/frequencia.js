@@ -4,7 +4,6 @@ import FrequenciaController from '../controllers/frequencia';
 export default(app)=>{
 	const frequenciaController = new FrequenciaController(app.datasource.models.Frequencia);
 
-
 	app.route('/frequencia')
 	.all(app.auth.authenticate())
 	.get((req, res)=> {
@@ -65,12 +64,14 @@ export default(app)=>{
 	});
 
 
+
 	app.route('/alunos_frequencia/:cpf_aluno')
 	.get((req, res)=> {
 		frequenciaController.getAllById(req.params).then(response => {
 			res.status(response.statusCode)
 			res.json(response.data)
 		});
-
 	})
+
+	
 }

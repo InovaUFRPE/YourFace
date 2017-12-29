@@ -10,9 +10,11 @@ const errorResponse = (message, statusCode = httpStatus.BAD_REQUEST) => defaultR
 }, statusCode);
 
 class FrequenciaController{
+	
 	constructor(Frequencia){
 		this.Frequencia = Frequencia;
 	}
+	
 	getAll(){
 		return this.Frequencia.findAll({})
 		.then(result => defaultResponse(result))
@@ -28,6 +30,7 @@ class FrequenciaController{
 		.then(result => defaultResponse(result))
 		.catch(error => errorResponse(error.message));
 	}
+	
 	create(data){
 		return this.Frequencia.create(data)
 		.then(result=> defaultResponse(result, httpStatus.CREATED))
@@ -39,6 +42,7 @@ class FrequenciaController{
 		.then(result=> defaultResponse(result))
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
 	}
+
 	delete(params){
 		return this.Frequencia.destroy({where: params})
 		.then(result => defaultResponse(result, httpStatus.NO_CONTENT))

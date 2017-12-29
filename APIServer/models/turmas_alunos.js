@@ -1,5 +1,3 @@
-/* jshint indent: 1 */
-
 export default  (sequelize, DataTypes) => {
 	return sequelize.define('Turmas_alunos', {
 		id_turmas_alunos: {

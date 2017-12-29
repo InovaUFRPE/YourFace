@@ -20,8 +20,6 @@ export default(app)=>{
 			res.json(response.data);
 		});
 	});
-
-
 	app.route('/alunos/:cpf')
 	.all(app.auth.authenticate())
 	.get((req, res)=> {
@@ -30,7 +28,6 @@ export default(app)=>{
 			res.json(response.data)
 		});
 	})
-
 	.put((req, res)=> {
 		alunoController.update(req.body, req.params).then(response => {
 			res.status(response.statusCode)

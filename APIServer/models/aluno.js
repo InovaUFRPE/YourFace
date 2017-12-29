@@ -1,4 +1,3 @@
-/* jshint indent: 1 */
 import bcrypt from 'bcrypt';
 export default  (sequelize, DataTypes) => {
 	return sequelize.define('Aluno', {
