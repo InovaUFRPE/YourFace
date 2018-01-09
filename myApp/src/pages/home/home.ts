@@ -10,6 +10,7 @@ import { ListarAlunosPage } from '../listar-alunos/listar-alunos';
 import { ListarProfessorPage } from '../listar-professor/listar-professor';
 
 import { RemoverUsuariosPage } from '../remover-usuarios/remover-usuarios';
+import { IntroPage } from '../intro/intro';
 
 
 
@@ -42,7 +43,7 @@ export class HomePage {
 
   sair(){
     localStorage.clear();
-    this.navCtrl.setRoot(LoginPage)
+    this.navCtrl.setRoot(IntroPage)
   }
 
   removerUsuarios(){
