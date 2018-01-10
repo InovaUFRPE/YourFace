@@ -15,9 +15,17 @@ export default  (sequelize, DataTypes) => {
 				notEmpty: true,
 			},
 		},
+
+
+		id_turma:{
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'turmas',
+				key: 'id_turma'
+			}
+		},
 		cpf_aluno: {
 			type: DataTypes.STRING,
-			allowNull: false,
 			references: {
 				model: 'aluno',
 				key: 'cpf'

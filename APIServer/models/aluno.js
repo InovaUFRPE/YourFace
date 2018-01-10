@@ -1,6 +1,11 @@
 import bcrypt from 'bcrypt';
 export default  (sequelize, DataTypes) => {
 	return sequelize.define('Aluno', {
+		cpf: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			primaryKey: true
+		},
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false,
@@ -33,11 +38,6 @@ export default  (sequelize, DataTypes) => {
 			type: DataTypes.BOOLEAN,
 			allowNull: true,
 			defaultValue: '1'
-		},
-		cpf: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			primaryKey: true
 		},
 		password: {
 			type: DataTypes.STRING,

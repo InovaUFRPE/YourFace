@@ -16,12 +16,11 @@ export default  (sequelize, DataTypes) => {
 		},
 		cpf_aluno: {
 			type: DataTypes.STRING,
-			allowNull: false,
 			references: {
 				model: 'aluno',
 				key: 'cpf'
 			}
-		}
+		},
 	}, {
 		tableName: 'Turmas_alunos'
 	});

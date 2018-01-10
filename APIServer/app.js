@@ -41,6 +41,7 @@ alunoRoutes(app);
 professorRoutes(app);
 coordenadorRoutes(app);
 frequenciaRoutes(app);
+
 frequenciaTurmaAlunoRoutes(app);
 
 loginRoutes(app);
