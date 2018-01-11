@@ -2,6 +2,15 @@ import ProfController from '../controllers/professores';
 
 export default(app)=>{
 	const profController = new ProfController(app.datasource.models.Professor);
+	
+	app.route('/abrirAta:idturma')	
+	.all(app.auth.authenticate()).get((req, res) => {
+		const sql = `call AbrirTurma(req.params.idturma)`;
+		app.datasource['sequelize'].query(sql,{ replacements: [req.params.cpf], type: app.datasource['sequelize'].QueryTypes.SELECT }
+		).then(frequencia_turma_Aluno => {res.json({msg:"Ata Aberta!"});})
+	})
+
+
 	app.route('/professores')
 	.all(app.auth.authenticate())
 	.get((req, res)=> {

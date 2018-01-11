@@ -13,6 +13,12 @@ export class HomeProfessorPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  abrirAtaDoDia() { 
+    ///abrirAta:idturma
+
+    console.log("abrirAtaDoDia"); 
+  }
+
   goToChamadaPage() {console.log("teste");}
 
   goToFrequenciaPage() {console.log("teste");}
