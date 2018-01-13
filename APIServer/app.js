@@ -9,6 +9,7 @@ import alunoRoutes from './routes/alunos';
 import professorRoutes from './routes/professores';
 import coordenadorRoutes from './routes/coordenador';
 import frequenciaRoutes from './routes/frequencia';
+import turmasRoutes from './routes/turmas';
 import frequenciaTurmaAlunoRoutes from './routes/frequenciaTurmaAluno';
 
 const app = express();
@@ -20,9 +21,9 @@ app.use((req, res, next) => {
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
 	res.setHeader('Access-Control-Allow-Headers', 'authorization, Origin, X-Requested-With, Content-Type, Accept');
 
-    if (req.method === "OPTIONS") 
+    if (req.method === "OPTIONS")
         res.send(200);
-    else 
+    else
         next();
 });
 
@@ -40,8 +41,8 @@ app.auth = auth;
 alunoRoutes(app);
 professorRoutes(app);
 coordenadorRoutes(app);
+turmasRoutes(app)
 frequenciaRoutes(app);
-
 frequenciaTurmaAlunoRoutes(app);
 
 loginRoutes(app);

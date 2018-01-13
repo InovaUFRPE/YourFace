@@ -11,7 +11,7 @@ export class FrequenciaProfessorPage {
   UrlApi= 'http://localhost:3000/'
   items: any;
   lista: any;
-  
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,public navParams: NavParams,public restProvider: ServiceProvider) {
     this.inicializaLista();
   }
@@ -50,7 +50,7 @@ export class FrequenciaProfessorPage {
   falta(user) {
     let prompt = this.alertCtrl.create({
       title: 'Colocar falta no Aluno?',
-      
+
       buttons: [
         {
           text: 'Cancelar',
@@ -82,7 +82,7 @@ export class FrequenciaProfessorPage {
   presente(user) {
     let prompt = this.alertCtrl.create({
       title: 'Colocar Presença?',
-    
+
       buttons: [
         {
           text: 'Cancelar',
@@ -102,7 +102,7 @@ export class FrequenciaProfessorPage {
               console.log(err);
               console.log("erro " + err);
             });
-            
+
 
           }
         }

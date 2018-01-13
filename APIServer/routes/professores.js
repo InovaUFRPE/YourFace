@@ -5,9 +5,13 @@ export default(app)=>{
 	
 	app.route('/abrirAta/:idturma')	
 	.all(app.auth.authenticate()).get((req, res) => {
-		const sql = `call AbrirTurma(req.params.idturma)`;
-		app.datasource['sequelize'].query(sql,{ replacements: [req.params.cpf], type: app.datasource['sequelize'].QueryTypes.SELECT }
+
+		console.log(req.params.idturma)
+		const sql = `call AbrirTurma(?)`;
+		app.datasource['sequelize'].query(sql,{ replacements: [req.params.idturma], type: app.datasource['sequelize'].QueryTypes.SELECT }
 		).then(frequencia_turma_Aluno => {res.json({msg:"Ata Aberta!"});})
+
+		
 	})
 
 

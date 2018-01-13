@@ -27,6 +27,7 @@ import { CadastroProfessorPage } from '../pages/cadastro-professor/cadastro-prof
 import { FrequenciaProfessorPage } from '../pages/frequencia-professor/frequencia-professor';
 import { HomeProfessorPage } from '../pages/home-professor/home-professor';
 import { ListarProfessorPage } from '../pages/listar-professor/listar-professor';
+import { AbrirTurmaProfessorPage } from '../pages/abrir-turma-professor/abrir-turma-professor';
 
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
@@ -43,6 +44,7 @@ import { HttpModule } from '@angular/http';
     InfomacaoDiretorPage,
     RelatorioPage,
     HomeProfessorPage,
+    AbrirTurmaProfessorPage,
     LoginPage,
     LoginAlunoPage,
     RemoverUsuariosPage,
@@ -53,7 +55,7 @@ import { HttpModule } from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule    
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -67,6 +69,7 @@ import { HttpModule } from '@angular/http';
     InfomacaoDiretorPage,
     RelatorioPage,
     HomeProfessorPage,
+    AbrirTurmaProfessorPage,
     LoginPage,
     LoginAlunoPage,
     RemoverUsuariosPage,
@@ -78,7 +81,7 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServiceProvider 
+    ServiceProvider
   ]
 })
 export class AppModule {}

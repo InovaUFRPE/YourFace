@@ -13,7 +13,7 @@ export class ListarAlunosPage {
   UrlApi = "http://localhost:3000/";
   items: any;
   lista: any;
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -106,7 +106,7 @@ export class ListarAlunosPage {
           placeholder: 'password',
           value: user.password
         },
- 
+
       ],
       buttons: [
         {
