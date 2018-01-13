@@ -47,16 +47,10 @@ export class FrequenciaProfessorPage {
     }
   }
 
-  deletarUser(user) {
+  falta(user) {
     let prompt = this.alertCtrl.create({
-      title: 'Deletar professor!',
-      inputs: [
-        {
-          name: 'cpf',
-          placeholder: 'cpf',
-          value: user.cpf
-        }
-      ],
+      title: 'Colocar falta no Aluno?',
+      
       buttons: [
         {
           text: 'Cancelar',
@@ -66,16 +60,17 @@ export class FrequenciaProfessorPage {
 
         },
         {
-          text: 'Deletar',
+          text: 'Confirma',
           handler: data => {
             console.log('Deletar clicked');
+            console.log(user)
 
-            /*this.http.delete(this.UrlApi+'professores/' + data.cpf, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.error("erro " + error);
-              });*/
+            //frequencia/:id_freq
+
+            this.restProvider.deleteApi(this.UrlApi+'frequenciaId/' + user.id_freq).then(data => {
+              console.log(user.id_freq)
+              this.inicializaLista();
+            });
 
 
             }
@@ -84,32 +79,10 @@ export class FrequenciaProfessorPage {
     });
     prompt.present();
   }
-  editarUser(user) {
+  presente(user) {
     let prompt = this.alertCtrl.create({
-      title: 'Edita Perfil',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'nome',
-          value: user.name
-        },
-        {
-          name: 'cpf',
-          placeholder: 'cpf',
-          value: user.cpf
-        },
-        {
-          name: 'email',
-          placeholder: 'email',
-          value: user.email
-        },
-        {
-          name: 'password',
-          placeholder: 'password',
-          value: user.password
-        }
-
-      ],
+      title: 'Colocar Presença?',
+    
       buttons: [
         {
           text: 'Cancelar',
@@ -119,27 +92,17 @@ export class FrequenciaProfessorPage {
 
         },
         {
-          text: 'Salvar',
+          text: 'Confirmar',
           handler: data => {
             console.log('Saved clicked');
-
-
-            /*this.http.put(this.UrlApi+'professores/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.log("erro " + error);
-              });
-           
-
-            this.restProvider.putApi(this.UrlApi+'professores/'+data.cpf, data).then((result) => {
+            this.restProvider.putApi(this.UrlApi+'frequenciaId/'+user.id_freq, {"presenca":true}).then((result) => {
               console.log(result);
               this.inicializaLista();
             }, (err) => {
               console.log(err);
               console.log("erro " + err);
             });
-            */
+            
 
           }
         }

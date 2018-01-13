@@ -44,9 +44,17 @@ class FrequenciaController{
 	}
 
 	delete(params){
+
+		console.log(params)
+		return this.Frequencia.update({"presenca":false} ,{where:params})
+		.then(result=> defaultResponse(result))
+		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));
+
+		/*
 		return this.Frequencia.destroy({where: params})
 		.then(result => defaultResponse(result, httpStatus.NO_CONTENT))
 		.catch(error => errorResponse(error.message, httpStatus.UNPROCESSABLE_ENTITY));	
+		*/
 	}
 }
 export default FrequenciaController;

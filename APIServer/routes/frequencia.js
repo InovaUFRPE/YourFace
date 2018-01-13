@@ -41,7 +41,7 @@ export default(app)=>{
 			res.json(response.data);
 		});
 	});
-	app.route('/frequencia/:id_freq')
+	app.route('/frequenciaId/:id_freq')
 	.all(app.auth.authenticate())
 	.get((req, res)=> {
 		frequenciaController.getById(req.params).then(response => {

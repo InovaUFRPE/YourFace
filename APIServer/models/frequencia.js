@@ -34,7 +34,7 @@ export default  (sequelize, DataTypes) => {
 		presenca: {
 			type: DataTypes.BOOLEAN,
 			allowNull: true,
-			defaultValue: '1'
+			defaultValue: true
 		}
 	}, {
 		tableName: 'Frequencia'
