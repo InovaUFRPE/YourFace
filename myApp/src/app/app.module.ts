@@ -22,9 +22,12 @@ import { FrequenciaAlunoPage } from '../pages/frequencia-aluno/frequencia-aluno'
 import { ListarAlunosPage } from '../pages/listar-alunos/listar-alunos';
 
 import { RelatorioPage } from '../pages/relatorio/relatorio';
+
 import { CadastroProfessorPage } from '../pages/cadastro-professor/cadastro-professor';
+import { FrequenciaProfessorPage } from '../pages/frequencia-professor/frequencia-professor';
 import { HomeProfessorPage } from '../pages/home-professor/home-professor';
 import { ListarProfessorPage } from '../pages/listar-professor/listar-professor';
+
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
 
@@ -36,6 +39,7 @@ import { HttpModule } from '@angular/http';
     CadastroPage,
     CadastroAlunoPage,
     CadastroProfessorPage,
+    FrequenciaProfessorPage,
     InfomacaoDiretorPage,
     RelatorioPage,
     HomeProfessorPage,
@@ -59,6 +63,7 @@ import { HttpModule } from '@angular/http';
     CadastroPage,
     CadastroAlunoPage,
     CadastroProfessorPage,
+    FrequenciaProfessorPage,
     InfomacaoDiretorPage,
     RelatorioPage,
     HomeProfessorPage,

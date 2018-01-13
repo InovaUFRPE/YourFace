@@ -4,26 +4,23 @@ import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
-  selector: 'page-relatorio',
-  templateUrl: 'relatorio.html',
+  selector: 'page-frequencia-professor',
+  templateUrl: 'frequencia-professor.html',
 })
-export class RelatorioPage {
-
-  UrlApi= 'http://localhost:3000/';
+export class FrequenciaProfessorPage {
+  UrlApi= 'http://localhost:3000/'
   items: any;
   lista: any;
-
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCtrl: AlertController,
-    public restProvider: ServiceProvider
-  ) {this.inicializaLista();}
+  
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController,public navParams: NavParams,public restProvider: ServiceProvider) {
+    this.inicializaLista();
+  }
 
   inicializaLista() {
 
-    this.restProvider.getApi(this.UrlApi+'frequencia_turma_Aluno').then(data => {
+    this.restProvider.getApi(this.UrlApi+'frequencia_turma_Aluno_prof/'+localStorage.getItem("id_prof")).then(data => {
       this.lista = JSON.parse(data['_body']);
+      console.log(this.lista)
       if (this.lista[0]!= null) {
         this.initializeItems();
       }
@@ -87,9 +84,6 @@ export class RelatorioPage {
     });
     prompt.present();
   }
-
-
-
   editarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Edita Perfil',
@@ -152,6 +146,9 @@ export class RelatorioPage {
       ]
     });
     prompt.present();
+  }
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FrequenciaProfessorPage');
   }
 
 }

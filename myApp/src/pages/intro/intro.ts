@@ -17,9 +17,8 @@ export class IntroPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
-  }
+  ionViewDidLoad() {}
+  
   goToLoginAlunoPage() {
     localStorage.clear();
     this.navCtrl.push(LoginAlunoPage);

@@ -13,10 +13,10 @@
         <img src="../assets/imgs/avatar.png">
       </ion-avatar>
       <h2>{{c.name}}</h2>
-      <p>presenca: {{c.cpf}}</p>
-      <p>presenca: {{c.name_turma}}</p>
-      <p>presenca: {{c.presenca}}</p>
-      <p>data: {{c.data}}</p>      
+      <p>Cpf: {{c.cpf}}</p>
+      <p>Turma: {{c.name_turma}}</p>
+      <p>presenca: {{c.presenca }}</p>
+      <p>data: {{c.data | date:'dd/MM/yyyy, HH:mm:ss '}}</p>      
     </ion-item>
   </ion-list>
 </ion-content>

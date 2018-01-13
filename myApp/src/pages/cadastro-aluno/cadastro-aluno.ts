@@ -121,7 +121,6 @@ export class CadastroAlunoPage {
     };
 
     this.restProvider.postApi(this.UrlApi+'alunos', usuarioEstudante).then((result) => {
-      console.log(result);
       this.showAlert();
       this.navCtrl.setRoot(HomePage);
     }, (err) => {

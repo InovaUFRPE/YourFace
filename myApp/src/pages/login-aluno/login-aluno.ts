@@ -40,5 +40,5 @@ export class LoginAlunoPage {
     });
     
   } 
-  ionViewDidLoad() {console.log("Pagina do aluno")}
+  ionViewDidLoad() {}
 }

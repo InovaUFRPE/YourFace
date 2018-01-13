@@ -1,6 +1,7 @@
 import HttpStatus from 'http-status';
 import jwt from 'jwt-simple';
 import bcrypt from 'bcrypt';
+import { isNull } from 'util';
 
 export default(app)=>{
 
@@ -21,7 +22,9 @@ export default(app)=>{
 				if (bcrypt.compareSync(password, user.password)) {
 					const payload = { cpf: user.cpf };
 					res.json({
+						success: true,
 						token: jwt.encode(payload, config.jwtSecret),
+						cpf: user.cpf
 					});
 				}else{
 					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
@@ -48,6 +51,7 @@ export default(app)=>{
 					res.json({
 						success: true,
 						token: jwt.encode(payload, config.jwtSecret),
+						cpf: user.cpf
 					});
 
 				}else{
@@ -65,14 +69,20 @@ export default(app)=>{
 		const cpf = req.body.cpf;
 		const password = req.body.password;
 
-		aluno.findOne({ where: { cpf } }).then(user => {
-			if (bcrypt.compareSync(password, user.password)) {
-				res.json({success: true, token: cpf});
-			}else{
-				res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
-			}
+		if(password === null || cpf === ''){
+			res.json({success: false, message: 'Campos Vazios'})
+		}else{
+			aluno.findOne({ where: { cpf } }).then(user => {
+				if (bcrypt.compareSync(password, user.password)) {
+					res.json({success: true, token: cpf});
+				}else{
+					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
+				}
+	
+			})
+		}
 
-		})
+
 	});
 
 
