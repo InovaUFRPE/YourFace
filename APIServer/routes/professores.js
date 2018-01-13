@@ -3,7 +3,7 @@ import ProfController from '../controllers/professores';
 export default(app)=>{
 	const profController = new ProfController(app.datasource.models.Professor);
 	
-	app.route('/abrirAta:idturma')	
+	app.route('/abrirAta/:idturma')	
 	.all(app.auth.authenticate()).get((req, res) => {
 		const sql = `call AbrirTurma(req.params.idturma)`;
 		app.datasource['sequelize'].query(sql,{ replacements: [req.params.cpf], type: app.datasource['sequelize'].QueryTypes.SELECT }
@@ -13,7 +13,7 @@ export default(app)=>{
 
 	app.route('/professores')
 	.all(app.auth.authenticate())
-	.get((req, res)=> {
+	.get((req, res)=> {  
 		profController.getAll().then(response => {
 			res.status(response.statusCode)
 			res.json(response.data)
