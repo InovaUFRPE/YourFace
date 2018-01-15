@@ -11,6 +11,7 @@ import { ListarProfessorPage } from '../listar-professor/listar-professor';
 
 import { RemoverUsuariosPage } from '../remover-usuarios/remover-usuarios';
 import { IntroPage } from '../intro/intro';
+import { TurmasRelatorioPage } from '../turmas-relatorio/turmas-relatorio';
 
 
 
@@ -24,7 +25,7 @@ export class HomePage {
     public navCtrl: NavController,
     public alertHomeCtrl:AlertController) {
   }
-  
+
 
   abrirCadastroAluno(){
     this.navCtrl.push(CadastroAlunoPage)
@@ -38,7 +39,7 @@ export class HomePage {
   }
 
   abrirRelatorio(){
-    this.navCtrl.push(RelatorioPage)
+    this.navCtrl.push(TurmasRelatorioPage)
   }
 
   sair(){

@@ -31,6 +31,7 @@ import { AbrirTurmaProfessorPage } from '../pages/abrir-turma-professor/abrir-tu
 
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
+import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { HttpModule } from '@angular/http';
     RemoverUsuariosPage,
     ListarAlunosPage,
     ListarProfessorPage,
-    FrequenciaAlunoPage
+    FrequenciaAlunoPage,
+    TurmasRelatorioPage
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import { HttpModule } from '@angular/http';
     RemoverUsuariosPage,
     ListarAlunosPage,
     ListarProfessorPage,
-    FrequenciaAlunoPage
+    FrequenciaAlunoPage,
+    TurmasRelatorioPage
   ],
   providers: [
     StatusBar,
