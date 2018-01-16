@@ -12,7 +12,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'login-aluno.html',
 })
 export class LoginAlunoPage {
-  UrlApi:any = 'http://localhost:3000/login/alunos';
 
   public userCredenciais = {
     cpf: null,
@@ -20,13 +19,13 @@ export class LoginAlunoPage {
   };
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public restProvider: ServiceProvider
   ) {}
 
   goToHomeAluno() {
-    this.restProvider.posLogintApi(this.UrlApi, this.userCredenciais).then((result) => {
+    this.restProvider.posLogintApi('login/alunos', this.userCredenciais).then((result) => {
       const alunoLogado = JSON.parse(result['_body']);
       if (alunoLogado.token) {
         localStorage.setItem("token", alunoLogado.token);
@@ -38,7 +37,7 @@ export class LoginAlunoPage {
     }, (err) => {
       console.log("Erro", err);
     });
-    
-  } 
+
+  }
   ionViewDidLoad() {}
 }

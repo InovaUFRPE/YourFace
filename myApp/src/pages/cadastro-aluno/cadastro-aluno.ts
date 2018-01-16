@@ -10,8 +10,6 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class CadastroAlunoPage {
 
-  UrlApi = "http://localhost:3000/";
-
   public dados = {
     name: null,
     cpf: null,
@@ -51,7 +49,7 @@ export class CadastroAlunoPage {
   }
 
   cadastrarEstudante() {
-   
+
     var name = this.dados.name;
     var cpf = this.dados.cpf;
     var email = this.dados.email;
@@ -120,7 +118,7 @@ export class CadastroAlunoPage {
       password: senha,
     };
 
-    this.restProvider.postApi(this.UrlApi+'alunos', usuarioEstudante).then((result) => {
+    this.restProvider.postApi('alunos', usuarioEstudante).then((result) => {
       this.showAlert();
       this.navCtrl.setRoot(HomePage);
     }, (err) => {

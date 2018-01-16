@@ -8,8 +8,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'listar-professor.html',
 })
 export class ListarProfessorPage {
-
-  UrlApi= 'http://localhost:3000/';
   items: any;
   lista: any;
 
@@ -20,7 +18,7 @@ export class ListarProfessorPage {
     public restProvider: ServiceProvider) {this.inicializaLista();}
 
   inicializaLista() {
-    this.restProvider.getApi(this.UrlApi+'professores').then(data => {
+    this.restProvider.getApi('professores').then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -46,7 +44,7 @@ export class ListarProfessorPage {
       })
     }
   }
-  
+
   deletarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Deletar professor!',
@@ -68,7 +66,7 @@ export class ListarProfessorPage {
         {
           text: 'Deletar',
           handler: data => {
-            this.restProvider.deleteApi(this.UrlApi+'professores/' + data.cpf).then(data => {
+            this.restProvider.deleteApi('professores/' + data.cpf).then(data => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);
@@ -119,7 +117,7 @@ export class ListarProfessorPage {
         {
           text: 'Salvar',
           handler: data => {
-            this.restProvider.putApi(this.UrlApi+'professores/'+data.cpf, data).then((result) => {
+            this.restProvider.putApi('professores/'+data.cpf, data).then((result) => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);

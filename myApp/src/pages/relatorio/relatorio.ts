@@ -8,8 +8,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'relatorio.html',
 })
 export class RelatorioPage {
-
-  UrlApi= 'http://localhost:3000/';
   items: any;
   lista: any;
 
@@ -22,7 +20,7 @@ export class RelatorioPage {
 
   inicializaLista() {
 
-    this.restProvider.getApi(this.UrlApi+'frequencia_turma_Aluno').then(data => {
+    this.restProvider.getApi('frequencia_turma_Aluno').then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -73,7 +71,7 @@ export class RelatorioPage {
           handler: data => {
             console.log('Deletar clicked');
 
-            /*this.http.delete(this.UrlApi+'professores/' + data.cpf, this.createRequestOptions()).map(res => res.json())
+            /*this.http.delete('professores/' + data.cpf, this.createRequestOptions()).map(res => res.json())
               .subscribe(res => {
                 this.inicializaLista();
               }, (error) => {
@@ -130,15 +128,15 @@ export class RelatorioPage {
             console.log('Saved clicked');
 
 
-            /*this.http.put(this.UrlApi+'professores/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
+            /*this.http.put('professores/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
               .subscribe(res => {
                 this.inicializaLista();
               }, (error) => {
                 console.log("erro " + error);
               });
-           
 
-            this.restProvider.putApi(this.UrlApi+'professores/'+data.cpf, data).then((result) => {
+
+            this.restProvider.putApi('professores/'+data.cpf, data).then((result) => {
               console.log(result);
               this.inicializaLista();
             }, (err) => {

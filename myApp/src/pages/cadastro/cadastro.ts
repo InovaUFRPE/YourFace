@@ -11,8 +11,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'cadastro.html',
 })
 export class CadastroPage {
-
-  UrlApi = "http://localhost:3000/";
   public dados = {
     name: null,
     cpf: null,
@@ -109,7 +107,7 @@ export class CadastroPage {
       email: email,
     };
 
-    this.restProvider.postApi(this.UrlApi+'coordenador', usuarioDiretor).then((result) => {
+    this.restProvider.postApi('coordenador', usuarioDiretor).then((result) => {
       console.log(result);
       this.showAlert();
       this.navCtrl.setRoot(HomePage);
@@ -123,7 +121,7 @@ export class CadastroPage {
   goToHomePage2() {
     this.navCtrl.setRoot(HomePage);
   }
-  
+
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',

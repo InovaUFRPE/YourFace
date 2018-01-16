@@ -9,7 +9,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'abrir-turma-professor.html',
 })
 export class AbrirTurmaProfessorPage {
-  UrlApi= 'http://localhost:3000/'
   turma: any;
 	disciplina: any;
   lista: any;
@@ -19,7 +18,7 @@ export class AbrirTurmaProfessorPage {
   }
 
   inicializaLista() {
-    this.restProvider.getApi(this.UrlApi+'turma/'+localStorage.getItem("id_prof")).then(data => {
+    this.restProvider.getApi('turma/'+localStorage.getItem("id_prof")).then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -33,7 +32,7 @@ export class AbrirTurmaProfessorPage {
 
   AbrirTurma(){
     if(this.turma!=null){
-      this.restProvider.getApi(this.UrlApi+'abrirAta/'+this.turma).then(data => {});
+      this.restProvider.getApi('abrirAta/'+this.turma).then(data => {});
     }
   }
 

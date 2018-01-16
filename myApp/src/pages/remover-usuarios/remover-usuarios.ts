@@ -10,10 +10,10 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'remover-usuarios.html',
 })
 export class RemoverUsuariosPage {
-  UrlApi = "http://localhost:3000/";
+
   items: any;
   lista: any;
-  
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,7 +23,7 @@ export class RemoverUsuariosPage {
   }
 
   inicializaLista() {
-    this.restProvider.getApi(this.UrlApi+'coordenador').then(data => {
+    this.restProvider.getApi('coordenador').then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -71,7 +71,7 @@ export class RemoverUsuariosPage {
         {
           text: 'Deletar',
           handler: data => {
-            this.restProvider.deleteApi(this.UrlApi+'coordenador/' + data.cpf).then(data => {
+            this.restProvider.deleteApi('coordenador/' + data.cpf).then(data => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);
@@ -82,7 +82,7 @@ export class RemoverUsuariosPage {
     });
     prompt.present();
   }
-  
+
   editarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Edita Perfil',
@@ -119,7 +119,7 @@ export class RemoverUsuariosPage {
         {
           text: 'Salvar',
           handler: data => {
-            this.restProvider.putApi(this.UrlApi+'coordenador/'+data.cpf, data).then((result) => {
+            this.restProvider.putApi('coordenador/'+data.cpf, data).then((result) => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);

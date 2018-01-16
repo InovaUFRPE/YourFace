@@ -5,6 +5,7 @@ import "rxjs/add/operator/do";
 
 @Injectable()
 export class ServiceProvider {
+  UrlServer:any = 'http://localhost:3000/';
 
   constructor(public http: Http) {
     console.log('Teste de Provaider APIRestFull');
@@ -12,6 +13,7 @@ export class ServiceProvider {
 
   postApi(UrlApi, data) {
     return new Promise((resolve, reject) => {
+      UrlApi= this.UrlServer+UrlApi;
       this.http.post(UrlApi, data, this.createRequestOptions()).subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -21,6 +23,7 @@ export class ServiceProvider {
   }
 
   getApi(UrlApi) {
+    UrlApi= this.UrlServer+UrlApi;
     return new Promise(resolve => {
       this.http.get(UrlApi, this.createRequestOptions()).subscribe(data => {
         resolve(data);
@@ -32,6 +35,7 @@ export class ServiceProvider {
 
 
   deleteApi(UrlApi) {
+    UrlApi= this.UrlServer+UrlApi;
     return new Promise(resolve => {
       this.http.delete(UrlApi, this.createRequestOptions()).subscribe(data => {
         resolve(data);
@@ -41,6 +45,7 @@ export class ServiceProvider {
     });
   }
   putApi(UrlApi, data) {
+    UrlApi= this.UrlServer+UrlApi;
     return new Promise((resolve, reject) => {
       this.http.put(UrlApi, data, this.createRequestOptions()).subscribe(res => {
           resolve(res);
@@ -51,6 +56,7 @@ export class ServiceProvider {
   }
 
   posLogintApi(UrlApi, data) {
+    UrlApi= this.UrlServer+UrlApi;
     return new Promise((resolve, reject) => {
       this.http.post(UrlApi, data, this.createRequestOptions()).subscribe(res => {
           resolve(res);
@@ -61,6 +67,7 @@ export class ServiceProvider {
   }
 
   getApiFrequencia(UrlApi) {
+    UrlApi= this.UrlServer+UrlApi;
     return new Promise(resolve => {
       this.http.get(UrlApi).subscribe(data => {
         resolve(data);

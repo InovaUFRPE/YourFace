@@ -10,7 +10,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'listar-alunos.html',
 })
 export class ListarAlunosPage {
-  UrlApi = "http://localhost:3000/";
   items: any;
   lista: any;
 
@@ -23,7 +22,7 @@ export class ListarAlunosPage {
   }
 
   inicializaLista() {
-    this.restProvider.getApi(this.UrlApi+'alunos').then(data => {
+    this.restProvider.getApi('alunos').then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -71,7 +70,7 @@ export class ListarAlunosPage {
         {
           text: 'Deletar',
           handler: data => {
-            this.restProvider.deleteApi(this.UrlApi+'alunos/' + data.cpf).then(data => {
+            this.restProvider.deleteApi('alunos/' + data.cpf).then(data => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);
@@ -116,7 +115,7 @@ export class ListarAlunosPage {
         {
           text: 'Salvar',
           handler: data => {
-            this.restProvider.putApi(this.UrlApi+'alunos/'+data.cpf, data).then((result) => {
+            this.restProvider.putApi('alunos/'+data.cpf, data).then((result) => {
               this.inicializaLista();
             }, (err) => {
               console.log(err);

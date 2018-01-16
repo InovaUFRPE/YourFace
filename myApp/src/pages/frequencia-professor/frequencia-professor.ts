@@ -8,7 +8,7 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'frequencia-professor.html',
 })
 export class FrequenciaProfessorPage {
-  UrlApi= 'http://localhost:3000/'
+
   items: any;
   lista: any;
 
@@ -18,7 +18,7 @@ export class FrequenciaProfessorPage {
 
   inicializaLista() {
 
-    this.restProvider.getApi(this.UrlApi+'frequencia_turma_Aluno_prof/'+localStorage.getItem("id_prof")).then(data => {
+    this.restProvider.getApi('frequencia_turma_Aluno_prof/'+localStorage.getItem("id_prof")).then(data => {
       this.lista = JSON.parse(data['_body']);
       console.log(this.lista)
       if (this.lista[0]!= null) {
@@ -67,7 +67,7 @@ export class FrequenciaProfessorPage {
 
             //frequencia/:id_freq
 
-            this.restProvider.deleteApi(this.UrlApi+'frequenciaId/' + user.id_freq).then(data => {
+            this.restProvider.deleteApi('frequenciaId/' + user.id_freq).then(data => {
               console.log(user.id_freq)
               this.inicializaLista();
             });
@@ -95,7 +95,7 @@ export class FrequenciaProfessorPage {
           text: 'Confirmar',
           handler: data => {
             console.log('Saved clicked');
-            this.restProvider.putApi(this.UrlApi+'frequenciaId/'+user.id_freq, {"presenca":true}).then((result) => {
+            this.restProvider.putApi('frequenciaId/'+user.id_freq, {"presenca":true}).then((result) => {
               console.log(result);
               this.inicializaLista();
             }, (err) => {

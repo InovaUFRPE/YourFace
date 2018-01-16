@@ -9,8 +9,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'cadastro-professor.html',
 })
 export class CadastroProfessorPage {
-  UrlApi = "http://localhost:3000/";
-
   public dados = {
     nomeUsuario: null,
     cpf: null,
@@ -106,7 +104,7 @@ export class CadastroProfessorPage {
       password: senha,
       email: email
     };
-    this.restProvider.postApi(this.UrlApi+'professores', usuarioProfessor).then((result) => {
+    this.restProvider.postApi('professores', usuarioProfessor).then((result) => {
       console.log(result);
       this.showAlert();
       this.navCtrl.setRoot(HomePage);
@@ -115,11 +113,9 @@ export class CadastroProfessorPage {
       this.showAlertErro();
     });
   }
-
   goToHomePage2() {
     this.navCtrl.push(HomePage);
   }
-
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',
@@ -128,7 +124,6 @@ export class CadastroProfessorPage {
     });
     alert.present();
   }
-
   showAlertErro() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro não realizado.',

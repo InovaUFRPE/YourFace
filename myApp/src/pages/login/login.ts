@@ -11,8 +11,6 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  UrlApi:any = 'http://localhost:3000/';
-  
   public userCredenciais = {
     cpf: null,
     password: null
@@ -27,7 +25,7 @@ export class LoginPage {
   ) {}
 
   goToHomeProfessor(){
-    this.restProvider.posLogintApi(this.UrlApi+'login/professores', this.userCredenciais).then((result) => {
+    this.restProvider.posLogintApi('login/professores', this.userCredenciais).then((result) => {
       const Professor = JSON.parse(result['_body']);
       if (Professor.token) {
         localStorage.setItem("token", Professor.token);
@@ -41,9 +39,9 @@ export class LoginPage {
     }, (err) => {
       console.log("Erro", err);
     });
-  }  
+  }
   goToHomeCoordenador() {
-    this.restProvider.posLogintApi(this.UrlApi+'login/coordenador', this.userCredenciais).then((result) => {
+    this.restProvider.posLogintApi('login/coordenador', this.userCredenciais).then((result) => {
       const Professor = JSON.parse(result['_body']);
       if (Professor.token) {
         localStorage.setItem("token", Professor.token);
@@ -79,7 +77,7 @@ export class LoginPage {
     let loader = this.loadingCtrl.create({
       content: "Aguarde por favor...",
       duration: 2000
-      
+
     });
     loader.present();
   }
