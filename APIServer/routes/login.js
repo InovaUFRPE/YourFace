@@ -4,21 +4,16 @@ import bcrypt from 'bcrypt';
 import { isNull } from 'util';
 
 export default(app)=>{
-
 	const config = app.config;
-	
 	const Coordenador = app.datasource.models.Coordenador;
 	const Profe = app.datasource.models.Professor;
 	const aluno = app.datasource.models.Aluno;
-
 	app.route('/login/professores')
 	.post((req, res)=>{
 		if (req.body.cpf && req.body.password) {
 			const cpf = req.body.cpf;
 			const password = req.body.password;
-
 			Profe.findOne({ where: { cpf } }).then(user => {
-
 				if (bcrypt.compareSync(password, user.password)) {
 					const payload = { cpf: user.cpf };
 					res.json({
@@ -47,7 +42,7 @@ export default(app)=>{
 
 				if (bcrypt.compareSync(password, user.password)) {
 					const payload = { cpf: user.cpf };
-					
+
 					res.json({
 						success: true,
 						token: jwt.encode(payload, config.jwtSecret),
@@ -68,7 +63,6 @@ export default(app)=>{
 	app.route('/login/alunos').post((req, res)=>{
 		const cpf = req.body.cpf;
 		const password = req.body.password;
-
 		if(password === null || cpf === ''){
 			res.json({success: false, message: 'Campos Vazios'})
 		}else{
@@ -78,12 +72,7 @@ export default(app)=>{
 				}else{
 					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
 				}
-	
 			})
 		}
-
-
 	});
-
-
 }
