@@ -3,22 +3,12 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { ServiceProvider } from '../../providers/service/service';
 import { RelatorioPage } from '../relatorio/relatorio';
 
-
-
-/**
- * Generated class for the TurmasRelatorioPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-turmas-relatorio',
   templateUrl: 'turmas-relatorio.html',
 })
 export class TurmasRelatorioPage {
-
   UrlApi= 'http://localhost:3000/';
   items: any;
   lista: any;
@@ -31,7 +21,6 @@ export class TurmasRelatorioPage {
   ) {this.inicializaLista();}
 
   inicializaLista() {
-
     this.restProvider.getApi(this.UrlApi+'turma').then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
