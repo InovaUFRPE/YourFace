@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
+import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
+import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
@@ -12,6 +15,7 @@ export class FrequenciaAlunoPage {
   lista: any;
 
   constructor(
+    public localStorage.getItem("token"), 
     public navCtrl: NavController,
     public navParams: NavParams,
     public restProvider: ServiceProvider
@@ -27,5 +31,9 @@ export class FrequenciaAlunoPage {
   }
   initializeItems() {
     this.items = this.lista;
+  }
+  sair() {
+    localStorage.clear();
+    this.navCtrl.setRoot(IntroPage);
   }
 }

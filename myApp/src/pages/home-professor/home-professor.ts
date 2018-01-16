@@ -1,10 +1,10 @@
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 
 import { FrequenciaProfessorPage } from '../frequencia-professor/frequencia-professor';
 import { AbrirTurmaProfessorPage } from '../abrir-turma-professor/abrir-turma-professor';
+import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
@@ -31,6 +31,6 @@ export class HomeProfessorPage {
 
   sair() {
     localStorage.clear();
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.setRoot(IntroPage);
   }
 }
