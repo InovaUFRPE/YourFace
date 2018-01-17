@@ -25,6 +25,11 @@ export class LoginAlunoPage {
   ) {}
 
   goToHomeAluno() {
+
+    if (this.userCredenciais.cpf != '' && this.userCredenciais.password != '') {
+      console.log("ok")      
+    }
+
     this.restProvider.posLogintApi('login/alunos', this.userCredenciais).then((result) => {
       const alunoLogado = JSON.parse(result['_body']);
       if (alunoLogado.token) {

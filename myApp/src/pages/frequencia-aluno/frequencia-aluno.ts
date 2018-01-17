@@ -5,6 +5,7 @@ import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 import { IntroPage } from '../intro/intro';
 
+
 @IonicPage()
 @Component({
   selector: 'page-frequencia-aluno',
@@ -15,11 +16,11 @@ export class FrequenciaAlunoPage {
   lista: any;
 
   constructor(
-    public localStorage.getItem("token"), 
     public navCtrl: NavController,
     public navParams: NavParams,
     public restProvider: ServiceProvider
   ) {this.inicializaLista();}
+
 
   inicializaLista() {
     this.restProvider.getApi('frequencia_turma_Aluno/'+localStorage.getItem("token")).then(data => {
@@ -32,6 +33,7 @@ export class FrequenciaAlunoPage {
   initializeItems() {
     this.items = this.lista;
   }
+
   sair() {
     localStorage.clear();
     this.navCtrl.setRoot(IntroPage);
