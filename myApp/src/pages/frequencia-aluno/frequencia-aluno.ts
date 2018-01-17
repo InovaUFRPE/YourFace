@@ -46,6 +46,7 @@ export class FrequenciaAlunoPage {
     });
   }
 
+
   initializeItems() {
     this.items = this.lista;
   }
