@@ -5,8 +5,14 @@
   </ion-navbar>
 
 </ion-header>
-
 <ion-content padding>
+    <h1>Meus dados cadastrados: </h1>
+    <h1>Nome-->  </h1>
+    <h1>CPF--> </h1>
+    <h1>Curso--> </h1>
+</ion-content>
+
+<ion-content >
   <ion-list>
     <ion-item *ngFor="let c of items">
       <ion-avatar item-left>
@@ -19,4 +25,7 @@
       <p>data: {{c.data | date:'dd/MM/yyyy, HH:mm:ss '}}</p>      
     </ion-item>
   </ion-list>
+<br>
+  <button ion-button block (click)="sair()">Sair</button>
+<br>
 </ion-content>
