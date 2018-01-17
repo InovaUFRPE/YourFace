@@ -26,10 +26,26 @@ export class FrequenciaAlunoPage {
     this.restProvider.getApi('frequencia_turma_Aluno/'+localStorage.getItem("token")).then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
+       
+        //modo magaiver
+        for (const key in this.lista) {
+          const element = this.lista[key];
+          for (const key in element) {
+            if (key =='presenca') {
+              if (element[key]=='1') {
+                element[key] ='Presente';
+              }else{
+                element[key] = 'Falta';
+              }    
+            }
+          }
+        }
+
         this.initializeItems();
       }
     });
   }
+
   initializeItems() {
     this.items = this.lista;
   }
