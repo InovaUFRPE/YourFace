@@ -12,13 +12,13 @@
   <ion-item-sliding>
     <ion-item>
       <ion-avatar item-start>
-        <img src="assets/imgs/intro01.png">
+        <img src="assets/imgs/avatar.png">
       </ion-avatar>
-      <p>id: {{user.id_freq}}</p>
       <p>Nome: {{user.name}}</p>
-      <p>Cpf: {{user.cpf}}</p>
-      <p>Presenca: {{user.presenca}}</p>
-      <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm:ss Z'}}</p>
+      <p>Matricola: {{user.cpf}}</p>
+      <p *ngIf="user.presenca===1">Presente</p>
+      <p *ngIf="user.presenca===0">Falta</p>
+      <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm '}}</p>
     </ion-item>
 
     <ion-item-options side="right">

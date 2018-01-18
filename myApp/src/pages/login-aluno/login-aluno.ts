@@ -26,23 +26,20 @@ export class LoginAlunoPage {
 
   goToHomeAluno() {
 
-    if (this.userCredenciais.cpf != '' && this.userCredenciais.password != '') {
-      console.log("ok")      
+    if (this.userCredenciais.cpf != null && this.userCredenciais.password != null) {
+      this.restProvider.posLogintApi('login/alunos', this.userCredenciais).then((result) => {
+        const alunoLogado = JSON.parse(result['_body']);
+        if (alunoLogado.token) {
+          //localStorage.setItem("token", alunoLogado.token);          
+          this.navCtrl.push(FrequenciaAlunoPage,  {parametro1:alunoLogado});
+        }else{
+          console.log("erro ", alunoLogado.message);
+        }
+      }, (err) => {
+        console.log("Erro", err);
+      });
+
     }
-
-    this.restProvider.posLogintApi('login/alunos', this.userCredenciais).then((result) => {
-      const alunoLogado = JSON.parse(result['_body']);
-      if (alunoLogado.token) {
-        localStorage.setItem("token", alunoLogado.token);
-        console.log(alunoLogado);
-        this.navCtrl.push(FrequenciaAlunoPage);
-      }else{
-        console.log("erro ", alunoLogado.message);
-      }
-    }, (err) => {
-      console.log("Erro", err);
-    });
-
   }
 
 }
