@@ -14,17 +14,24 @@ import { IntroPage } from '../intro/intro';
 export class FrequenciaAlunoPage {
   items: any;
   lista: any;
-  aluno: any;
+
+  public aluno = {
+    name: null,
+    cpf: null,
+    ativo: null,
+  };
 
   faltasTotal = 0;
 
   constructor(public navCtrl: NavController,public navParams: NavParams,public restProvider: ServiceProvider) {
     this.inicializaLista();
-    this.aluno = this.navParams.get("parametro1")
+    this.aluno.name = this.navParams.get("parametro1")['user']['name'];
+    this.aluno.cpf = this.navParams.get("parametro1")['user']['cpf'];
+    this.aluno.ativo = this.navParams.get("parametro1")['user']['ativo'];
     console.log(this.aluno);
   }
   inicializaLista() {
-    this.restProvider.getApi('frequencia_turma_Aluno/'+this.aluno.user.cpf).then(data => {
+    this.restProvider.getApi('frequencia_turma_Aluno/'+this.aluno.cpf).then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         //modo magaiver
