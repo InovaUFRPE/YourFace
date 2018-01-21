@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
 
 import { FrequenciaProfessorPage } from '../frequencia-professor/frequencia-professor';
+import { RelatorioProfessorPage } from '../relatorio-professor/relatorio-professor';
+
 
 @IonicPage()
 @Component({
@@ -41,9 +43,9 @@ export class DisciplinaProfessorPage {
 
   goToChamadaPage(nome, id){
     if(this.tipo==='B'){
-      //this.navCtrl.push( ,{'prof':this.Prof,'disc':id});
+      this.navCtrl.push(RelatorioProfessorPage,{'prof':this.Prof,'disc':id,'nome':nome});
     }else{
-      this.navCtrl.push(FrequenciaProfessorPage,{'prof':this.Prof,'disc':id});
+      this.navCtrl.push(FrequenciaProfessorPage,{'prof':this.Prof,'disc':id,'nome':nome});
     }
   }
 

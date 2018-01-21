@@ -24,11 +24,10 @@ export class FrequenciaAlunoPage {
   faltasTotal = 0;
 
   constructor(public navCtrl: NavController,public navParams: NavParams,public restProvider: ServiceProvider) {
-    this.inicializaLista();
     this.aluno.name = this.navParams.get("parametro1")['user']['name'];
     this.aluno.cpf = this.navParams.get("parametro1")['user']['cpf'];
     this.aluno.ativo = this.navParams.get("parametro1")['user']['ativo'];
-    console.log(this.aluno);
+    this.inicializaLista();
   }
   inicializaLista() {
     this.restProvider.getApi('frequencia_turma_Aluno/'+this.aluno.cpf).then(data => {

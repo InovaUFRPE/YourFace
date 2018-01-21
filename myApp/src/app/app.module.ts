@@ -16,9 +16,7 @@ import { RemoverUsuariosPage } from '../pages/remover-usuarios/remover-usuarios'
 
 import { CadastroAlunoPage } from '../pages/cadastro-aluno/cadastro-aluno';
 import { LoginAlunoPage } from '../pages/login-Aluno/login-Aluno';
-
 import { FrequenciaAlunoPage } from '../pages/frequencia-aluno/frequencia-aluno';
-
 import { ListarAlunosPage } from '../pages/listar-alunos/listar-alunos';
 
 import { RelatorioPage } from '../pages/relatorio/relatorio';
@@ -29,10 +27,15 @@ import { HomeProfessorPage } from '../pages/home-professor/home-professor';
 import { ListarProfessorPage } from '../pages/listar-professor/listar-professor';
 import { AbrirTurmaProfessorPage } from '../pages/abrir-turma-professor/abrir-turma-professor';
 import { DisciplinaProfessorPage } from '../pages/disciplina-professor/disciplina-professor';
+import { RelatorioProfessorPage } from '../pages/relatorio-professor/relatorio-professor';
+
 
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
 import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio';
+
+import { ChartModule } from 'angular2-highcharts';
+import * as highcharts from 'highcharts';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio'
     CadastroAlunoPage,
     CadastroProfessorPage,
     FrequenciaProfessorPage,
+    RelatorioProfessorPage,
     InfomacaoDiretorPage,
     RelatorioPage,
     HomeProfessorPage,
@@ -59,6 +63,7 @@ import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio'
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    ChartModule.forRoot(highcharts),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -70,6 +75,7 @@ import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio'
     CadastroAlunoPage,
     CadastroProfessorPage,
     FrequenciaProfessorPage,
+    RelatorioProfessorPage,
     InfomacaoDiretorPage,
     DisciplinaProfessorPage,
     RelatorioPage,

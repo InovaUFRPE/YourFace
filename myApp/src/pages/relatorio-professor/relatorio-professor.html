@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>relatorio-professor</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<h1>{{nomeDisc}}</h1>
+Total: {{Total}}<br>
+Faltas Total:{{faltasTotal}}<br>
+Presenca Total:{{presensaTotal}}<br>
+
+<chart [options]="chartOptions" style="display:block" type='chart' width='50%'></chart>
+
+</ion-content>
