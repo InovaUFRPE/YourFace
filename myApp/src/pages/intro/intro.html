@@ -1,22 +1,15 @@
 <ion-content padding>
-  <ion-slides pager>
-    <ion-slide class="intro_slide">
+  <ion-card>
+		<ion-card-header>
       <img src="assets/imgs/intro01.png" alt="">
-      <h2>YouFace</h2>
-      <div>
-        <p>
-          {{objetoMensagem.mensagem}}
-        </p>
-      </div>
-      <button ion-button block color="secondary" (click)="goToLoginPage()">
-        Docente
-      </button>
-
-      <button ion-button block color="primary" (click)="goToLoginAlunoPage()">
-        Discente
-      </button>
-
-    </ion-slide>
-
-  </ion-slides>
+    </ion-card-header>
+    <ion-card-content >
+      <ion-list no-line>
+        <h2>YouFace</h2>
+        <p>{{objetoMensagem.mensagem}}</p>
+        <button ion-button block color="secondary" (click)="goToLoginPage()">Docente</button>
+        <button ion-button block color="primary" (click)="goToLoginAlunoPage()">Discente</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

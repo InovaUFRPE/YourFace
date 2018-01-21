@@ -8,8 +8,7 @@
   <ion-list *ngFor="let user of items ">
     <ion-item-sliding>
       <ion-item>
-        <p>Turma: {{user.name_turma}}</p>
-        <button ion-button block (click)="abrirRelatorio()">Visualizar Turma</button>
+        <button ion-button block (click)="abrirRelatorio(user.name_turma, user.id_turma)">{{user.name_turma}}</button>
       </ion-item>
     </ion-item-sliding>
   </ion-list>

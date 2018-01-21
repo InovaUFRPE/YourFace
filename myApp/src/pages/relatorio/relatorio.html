@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Relatório</ion-title>
+    <ion-title>Relatório de {{nome}}</ion-title>
   </ion-navbar>
 <ion-toolbar color="primary">
   <ion-searchbar (input)="getItems($event)"></ion-searchbar>
@@ -18,7 +18,7 @@
       <p>Matricola: {{user.cpf}}</p>
       <p *ngIf="user.presenca===1">Presente</p>
       <p *ngIf="user.presenca===0">Falta</p>
-      <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm '}}</p>
+      <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm'}}</p>
     </ion-item>
 
     <ion-item-options side="right">

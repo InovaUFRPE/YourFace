@@ -7,20 +7,23 @@ import { ServiceProvider } from '../../providers/service/service';
   selector: 'page-relatorio',
   templateUrl: 'relatorio.html',
 })
+
 export class RelatorioPage {
   items: any;
   lista: any;
+  idTurma: string;
+  nome: string;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCtrl: AlertController,
-    public restProvider: ServiceProvider
-  ) {this.inicializaLista();}
+  constructor(public navCtrl: NavController,public navParams: NavParams,public alertCtrl: AlertController,public restProvider: ServiceProvider) {
+    this.idTurma = this.navParams.get("idTurma");
+    this.nome = this.navParams.get("nomeTurma");
+    this.inicializaLista();
+  }
 
   inicializaLista() {
-
-    this.restProvider.getApi('frequencia_turma_Aluno').then(data => {
+    //frequencia_turma_Aluno
+    console.log(this.idTurma)
+    this.restProvider.getApi('frequencia_turma_Aluno_turma/'+this.idTurma).then(data => {
       this.lista = JSON.parse(data['_body']);
       if (this.lista[0]!= null) {
         this.initializeItems();
@@ -28,128 +31,17 @@ export class RelatorioPage {
     });
 
   }
-
   initializeItems() {
     this.items = this.lista;
   }
 
   getItems(ev: any) {
-    // Reset items back to all of the items
     this.initializeItems();
-
-    // set val to the value of the searchbar
     let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    if (val && val.trim() != '') {
-      this.items = this.items.filter((item) => {
-        return (item.cpf_aluno.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
-    }
+    console.log(val)
   }
 
-  deletarUser(user) {
-    let prompt = this.alertCtrl.create({
-      title: 'Deletar professor!',
-      inputs: [
-        {
-          name: 'cpf',
-          placeholder: 'cpf',
-          value: user.cpf
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-
-        },
-        {
-          text: 'Deletar',
-          handler: data => {
-            console.log('Deletar clicked');
-
-            /*this.http.delete('professores/' + data.cpf, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.error("erro " + error);
-              });*/
-
-
-            }
-        }
-      ]
-    });
-    prompt.present();
-  }
-
-
-
-  editarUser(user) {
-    let prompt = this.alertCtrl.create({
-      title: 'Edita Perfil',
-      inputs: [
-        {
-          name: 'name',
-          placeholder: 'nome',
-          value: user.name
-        },
-        {
-          name: 'cpf',
-          placeholder: 'cpf',
-          value: user.cpf
-        },
-        {
-          name: 'email',
-          placeholder: 'email',
-          value: user.email
-        },
-        {
-          name: 'password',
-          placeholder: 'password',
-          value: user.password
-        }
-
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-
-        },
-        {
-          text: 'Salvar',
-          handler: data => {
-            console.log('Saved clicked');
-
-
-            /*this.http.put('professores/'+data.cpf, data, this.createRequestOptions()).map(res => res.json())
-              .subscribe(res => {
-                this.inicializaLista();
-              }, (error) => {
-                console.log("erro " + error);
-              });
-
-
-            this.restProvider.putApi('professores/'+data.cpf, data).then((result) => {
-              console.log(result);
-              this.inicializaLista();
-            }, (err) => {
-              console.log(err);
-              console.log("erro " + err);
-            });
-            */
-
-          }
-        }
-      ]
-    });
-    prompt.present();
-  }
+  deletarUser(user) {}
+  editarUser(user) {}
 
 }
