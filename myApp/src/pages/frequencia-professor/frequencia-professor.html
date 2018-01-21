@@ -2,6 +2,9 @@
   <ion-navbar>
     <ion-title>frequencia-professor</ion-title>
   </ion-navbar>
+  <ion-toolbar color="primary">
+    <ion-searchbar (input)="getItems($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
@@ -12,16 +15,17 @@
           <img src="assets/imgs/intro01.png">
         </ion-avatar>
         <h2>{{user.name}}</h2>
-        <p>Cpf: {{user.cpf}}</p>
+        <p>Matricola: {{user.cpf}}</p>
         <p>Turma: {{user.name_turma}}</p>
-        <p>Presenca: {{user.presenca}}</p>
+        <p *ngIf="user.presenca===1">Presente</p>
+        <p *ngIf="user.presenca===0">Faltou</p>
         <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm'}}</p>
       </ion-item>
-  
+
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="falta(user)">Falta</button>
       </ion-item-options>
-  
+
       <ion-item-options side="left">
         <button ion-button color="secondary" (click)="presente(user)">Presença</button>
       </ion-item-options>

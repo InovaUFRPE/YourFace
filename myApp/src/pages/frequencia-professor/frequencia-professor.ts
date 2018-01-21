@@ -11,14 +11,18 @@ export class FrequenciaProfessorPage {
 
   items: any;
   lista: any;
+  Disc:any;
+  Prof: string;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController,public navParams: NavParams,public restProvider: ServiceProvider) {
+    this.Prof = this.navParams.get("prof");
+    this.Disc = this.navParams.get("disc");
     this.inicializaLista();
   }
 
   inicializaLista() {
-
-    this.restProvider.getApi('frequencia_turma_Aluno_prof/'+localStorage.getItem("id_prof")).then(data => {
+    console.log(this.Prof+'/'+this.Disc)
+    this.restProvider.getApi('frequencia_turma_Aluno_prof_turma/'+this.Prof+'/'+this.Disc).then(data => {
       this.lista = JSON.parse(data['_body']);
       console.log(this.lista)
       if (this.lista[0]!= null) {

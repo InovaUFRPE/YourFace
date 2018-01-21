@@ -63,7 +63,20 @@ export default(app)=>{
 	})
 
 
+	app.route('/frequencia_turma_Aluno_prof_turma/:cpf_prof/:id')
+	.get((req, res)=> {
+		const sql = `SELECT turmas.id_turma,turmas.cpf_prof, frequencia.id_freq, aluno.ativo, aluno.name, aluno.cpf, frequencia.presenca, frequencia.data, frequencia.id_freq, turmas.name_turma FROM frequencia
+		LEFT JOIN turmas ON (frequencia.id_turma = turmas.id_turma)
+		LEFT JOIN aluno ON (frequencia.cpf_aluno = aluno.cpf) WHERE aluno.ativo = 1 and cpf_prof = ? and turmas.id_turma = ?`
 
+		app.datasource['sequelize'].query(sql,
+		{ replacements: [req.params.cpf_prof,req.params.id], type: app.datasource['sequelize'].QueryTypes.SELECT }
+		).then(frequencia_turma_Aluno => {
+			res.json(frequencia_turma_Aluno);
+		}).catch(function(e) {
+			res.json([]);
+		})
+	})
 
 
 }

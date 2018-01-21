@@ -28,6 +28,7 @@ import { FrequenciaProfessorPage } from '../pages/frequencia-professor/frequenci
 import { HomeProfessorPage } from '../pages/home-professor/home-professor';
 import { ListarProfessorPage } from '../pages/listar-professor/listar-professor';
 import { AbrirTurmaProfessorPage } from '../pages/abrir-turma-professor/abrir-turma-professor';
+import { DisciplinaProfessorPage } from '../pages/disciplina-professor/disciplina-professor';
 
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
@@ -46,6 +47,7 @@ import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio'
     RelatorioPage,
     HomeProfessorPage,
     AbrirTurmaProfessorPage,
+    DisciplinaProfessorPage,
     LoginPage,
     LoginAlunoPage,
     RemoverUsuariosPage,
@@ -69,6 +71,7 @@ import { TurmasRelatorioPage } from '../pages/turmas-relatorio/turmas-relatorio'
     CadastroProfessorPage,
     FrequenciaProfessorPage,
     InfomacaoDiretorPage,
+    DisciplinaProfessorPage,
     RelatorioPage,
     HomeProfessorPage,
     AbrirTurmaProfessorPage,
