@@ -41,7 +41,7 @@ export class DisciplinaProfessorPage {
 
   goToChamadaPage(nome, id){
     if(this.tipo==='B'){
-
+      //this.navCtrl.push( ,{'prof':this.Prof,'disc':id});
     }else{
       this.navCtrl.push(FrequenciaProfessorPage,{'prof':this.Prof,'disc':id});
     }

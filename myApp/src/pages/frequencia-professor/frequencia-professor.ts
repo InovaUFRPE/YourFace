@@ -38,13 +38,11 @@ export class FrequenciaProfessorPage {
   getItems(ev: any) {
     this.initializeItems();
     let val = ev.target.value;
-
-    // if the value is an empty string don't filter the items
-    /*if (val && val.trim() != '') {
+    if (val && val.trim() != '') {
       this.items = this.items.filter((item) => {
-        return (item.cpf_aluno.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.cpf.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
-    }*/
+    }
   }
 
   falta(user) {
