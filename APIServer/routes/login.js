@@ -72,7 +72,7 @@ export default(app)=>{
 				}else{
 					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
 				}
-			})
+			}).catch(function (err) {res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})});
 		}
 	});
 }
