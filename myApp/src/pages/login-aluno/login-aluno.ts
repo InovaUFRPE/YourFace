@@ -1,31 +1,23 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
-
+import { IonicPage, NavController, AlertController} from 'ionic-angular';
 import { FrequenciaAlunoPage } from '../frequencia-aluno/frequencia-aluno';
-
 import { ServiceProvider } from '../../providers/service/service';
 
-@IonicPage()
+
 @Component({
   selector: 'page-login-aluno',
   templateUrl: 'login-aluno.html',
 })
-export class LoginAlunoPage {
 
+export class LoginAlunoPage {
   public userCredenciais = {
-    cpf: null,
+  	cpf: null,
     password: null
   };
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertLoginCtrl: AlertController,
-    public restProvider: ServiceProvider
-  ) {}
+  constructor(public navCtrl: NavController,public alertLoginCtrl: AlertController,public restProvider: ServiceProvider) {}
 
   goToHomeAluno() {
-
     if (this.userCredenciais.cpf != null && this.userCredenciais.password != null) {
       this.restProvider.posLogintApi('login/alunos', this.userCredenciais).then((result) => {
         const alunoLogado = JSON.parse(result['_body']);
@@ -42,9 +34,6 @@ export class LoginAlunoPage {
     }else{
         this.showAlertErro();
     }
-
-
-
   }
   showAlertErro() {
     let alert = this.alertLoginCtrl.create({
