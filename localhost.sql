@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 21-Jan-2018 às 18:33
+-- Generation Time: 24-Jan-2018 às 17:22
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -21,35 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `yourface`
 --
-DROP DATABASE IF EXISTS `yourface`;
 CREATE DATABASE IF NOT EXISTS `yourface` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `yourface`;
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AbrirTurma` (IN `idturma` INT)  BEGIN
-
-DECLARE v_aluno varchar(255);
-
-DECLARE cur1 CURSOR FOR SELECT cpf_aluno FROM turmas_alunos WHERE id_turma = idturma;
-
-OPEN cur1;
-
-LOOP
-
-	FETCH cur1 INTO v_aluno;
-	
-	INSERT INTO frequencia (data,id_turma,cpf_aluno,presenca,created_at,updated_at) VALUES (NOW(),idturma,v_aluno,0,now(),now());
-
-END LOOP;
-
-CLOSE cur1;
-
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -103,6 +76,18 @@ INSERT INTO `coordenador` (`name`, `email`, `password`, `ativo`, `cpf`, `created
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `desconhecidos`
+--
+
+CREATE TABLE `desconhecidos` (
+  `id` int(11) NOT NULL,
+  `data` datetime NOT NULL,
+  `id_foto` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `frequencia`
 --
 
@@ -121,9 +106,9 @@ CREATE TABLE `frequencia` (
 --
 
 INSERT INTO `frequencia` (`id_freq`, `data`, `id_turma`, `cpf_aluno`, `presenca`, `created_at`, `updated_at`) VALUES
-(11, '2018-01-16 00:00:00', 1, '1234', 1, '2018-01-13 11:58:27', '2018-01-21 17:10:00'),
-(12, '2018-01-13 11:58:27', 1, '071', 1, '2018-01-13 11:58:27', '2018-01-21 17:09:56'),
-(13, '2018-01-13 12:22:41', 2, '1234', 0, '2018-01-13 12:22:41', '2018-01-21 17:10:09'),
+(11, '2018-01-23 00:00:00', 1, '1234', 0, '2018-01-13 11:58:27', '2018-01-21 17:10:00'),
+(12, '2018-01-24 14:09:00', 1, '071', 0, '2018-01-13 11:58:27', '2018-01-23 12:45:08'),
+(13, '2018-01-13 00:00:00', 2, '1234', 0, '2018-01-13 12:22:41', '2018-01-21 17:10:09'),
 (14, '2018-01-13 22:25:05', 2, '1234', 0, '2018-01-13 22:25:05', '2018-01-13 22:25:05');
 
 -- --------------------------------------------------------
@@ -211,6 +196,12 @@ ALTER TABLE `coordenador`
   ADD PRIMARY KEY (`cpf`);
 
 --
+-- Indexes for table `desconhecidos`
+--
+ALTER TABLE `desconhecidos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `frequencia`
 --
 ALTER TABLE `frequencia`
@@ -242,6 +233,12 @@ ALTER TABLE `turmas_alunos`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `desconhecidos`
+--
+ALTER TABLE `desconhecidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `frequencia`
