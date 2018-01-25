@@ -64,6 +64,6 @@ export class FrequenciaAlunoPage {
   }
 
   goToFrequNcia(){
-    console.log("Frequencia")
+    console.log(this.items)
   }
 }

@@ -8,7 +8,7 @@
 
 
 <ion-content padding class="background">
-  
+
   <ion-card>
       <ion-card-header>
           <img width="50" height="50"  src="assets/imgs/avatar.png">
@@ -18,14 +18,14 @@
 
             <ion-item>
               <ion-label floating color="dark">Cpf</ion-label>
-              <ion-input type="text" [(ngModel)]="userCredenciais.cpf" class="inputIdade" required ></ion-input>
+              <ion-input type="text" [(ngModel)]="userCredenciais.cpf" class="inputIdade" autofocus required ></ion-input>
             </ion-item>
-            
+
             <ion-item>
               <ion-label floating color="dark">Password</ion-label>
               <ion-input type="password" [(ngModel)]="userCredenciais.password" class="inputIdade" required ></ion-input>
             </ion-item>
-            
+
             <button ion-button block color="dark" (click)="goToHomeAluno()">Login </button>
 
 
