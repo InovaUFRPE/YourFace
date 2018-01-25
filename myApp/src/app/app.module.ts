@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { CadastraDisciplinaPage } from '../pages/cadastra-disciplina/cadastra-disciplina';
+
 import { HomePage } from '../pages/home/home';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -52,6 +54,7 @@ import * as highcharts from 'highcharts';
     HomeProfessorPage,
     AbrirTurmaProfessorPage,
     DisciplinaProfessorPage,
+    CadastraDisciplinaPage,
     LoginPage,
     LoginAlunoPage,
     RemoverUsuariosPage,
@@ -84,6 +87,7 @@ import * as highcharts from 'highcharts';
     LoginPage,
     LoginAlunoPage,
     RemoverUsuariosPage,
+    CadastraDisciplinaPage,
     ListarAlunosPage,
     ListarProfessorPage,
     FrequenciaAlunoPage,

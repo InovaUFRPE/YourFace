@@ -13,7 +13,7 @@ import { RemoverUsuariosPage } from '../remover-usuarios/remover-usuarios';
 import { IntroPage } from '../intro/intro';
 import { TurmasRelatorioPage } from '../turmas-relatorio/turmas-relatorio';
 
-
+import { CadastraDisciplinaPage } from '../cadastra-disciplina/cadastra-disciplina';
 
 @Component({
   selector: 'page-home',
@@ -54,7 +54,12 @@ export class HomePage {
   listarAlunos(){
     this.navCtrl.push(ListarAlunosPage)
   }
+
   listarProfessor() {
     this.navCtrl.push(ListarProfessorPage)
+  }
+
+  CadastraDisciplina(){
+    this.navCtrl.push(CadastraDisciplinaPage)
   }
 }
