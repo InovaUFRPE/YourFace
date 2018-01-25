@@ -12,6 +12,12 @@ export default(app)=>{
       res.json(response.data)
     });
   })
+  .post((req, res)=> {
+    turmaController.create(req.body).then(response => {
+      res.status(response.statusCode)
+      res.json(response.data)
+    });
+  })
 
   app.route('/turma/:cpf_prof')
   .all(app.auth.authenticate())
@@ -21,4 +27,7 @@ export default(app)=>{
       res.json(response.data)
     });
   })
+
+
+
 }

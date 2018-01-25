@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { ServiceProvider } from '../../providers/service/service';
 
-/**
- * Generated class for the CadastraDisciplinaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +9,56 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'cadastra-disciplina.html',
 })
 export class CadastraDisciplinaPage {
+  professores: any;
+  lista: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  cpf_prof:string;
+  name_disciplina:string;
+
+  constructor(public navCtrl: NavController,public alertLoginCtrl: AlertController, public navParams: NavParams, public restProvider: ServiceProvider) {
+    this.inicializaLista();
+  }
+  inicializaLista() {
+    this.restProvider.getApi('professores').then(data => {
+      this.lista = JSON.parse(data['_body']);
+      if (this.lista[0]!= null) {
+        this.initializeItems();
+      }
+    });
+  }
+  initializeItems() {
+    this.professores = this.lista;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CadastraDisciplinaPage');
+  cadastraturma(){
+
+    if(this.cpf_prof != null && this.name_disciplina != null){
+      this.restProvider.postApi('turma', {cpf_prof: this.cpf_prof,"name_turma":this.name_disciplina}).then((result) => {
+        this.showAlert()
+        this.navCtrl.push(HomePage);
+      }, (err) => {
+        console.log(err);
+      });
+    }else{
+      this.showAlertErro();
+    }
+  }
+  showAlert() {
+    let alert = this.alertLoginCtrl.create({
+      title: 'Cadastro realizado com sucesso!',
+      subTitle: 'Parabéns disciplina cadastrada em nossa base de dados.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  showAlertErro() {
+    let alert = this.alertLoginCtrl.create({
+      title: 'Cadastro não Realizado.',
+      subTitle: 'Campos Vazios.',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

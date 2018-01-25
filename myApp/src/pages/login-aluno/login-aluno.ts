@@ -3,7 +3,7 @@ import { IonicPage, NavController, AlertController} from 'ionic-angular';
 import { FrequenciaAlunoPage } from '../frequencia-aluno/frequencia-aluno';
 import { ServiceProvider } from '../../providers/service/service';
 
-
+@IonicPage()
 @Component({
   selector: 'page-login-aluno',
   templateUrl: 'login-aluno.html',
