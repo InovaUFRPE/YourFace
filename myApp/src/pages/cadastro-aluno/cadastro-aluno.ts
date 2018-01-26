@@ -83,7 +83,7 @@ export class CadastroAlunoPage {
       //alert('Cpf inválido.');
       //return;
     //}
-    if (cpf.lenght(cpf) != 4) {
+    if (cpf.lenght != 4) {
       alert('Cpf inválido.');
       return;
     }
