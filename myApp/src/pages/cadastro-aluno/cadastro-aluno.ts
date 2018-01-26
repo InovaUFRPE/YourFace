@@ -79,10 +79,10 @@ export class CadastroAlunoPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf) == false) {
-      alert('Cpf inválido.');
-      return;
-    }
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
     if (curso == undefined) {
       alert('O campo curso/série é um campo obrigatório.');
       return;
