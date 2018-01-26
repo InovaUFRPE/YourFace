@@ -83,6 +83,10 @@ export class CadastroAlunoPage {
       //alert('Cpf inválido.');
       //return;
     //}
+    if (cpf.lenght(cpf) != 4) {
+      alert('Cpf inválido.');
+      return;
+    }
     if (curso == undefined) {
       alert('O campo curso/série é um campo obrigatório.');
       return;
