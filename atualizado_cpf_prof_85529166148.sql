@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: 24-Jan-2018 às 17:22
+-- Host: 127.0.0.1
+-- Generation Time: 28-Jan-2018 às 00:03
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,6 +21,32 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `yourface` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `yourface`;
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AbrirTurma` (IN `idturma` INT)  BEGIN
+
+DECLARE v_aluno varchar(255);
+
+DECLARE cur1 CURSOR FOR SELECT cpf_aluno FROM turmas_alunos WHERE id_turma = idturma;
+
+OPEN cur1;
+
+LOOP
+
+	FETCH cur1 INTO v_aluno;
+	
+	INSERT INTO frequencia (data,id_turma,cpf_aluno,presenca,created_at,updated_at) VALUES (NOW(),idturma,v_aluno,0,now(),now());
+
+END LOOP;
+
+CLOSE cur1;
+
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -47,8 +71,8 @@ CREATE TABLE `aluno` (
 --
 
 INSERT INTO `aluno` (`cpf`, `name`, `email`, `curso`, `dataNascimento`, `ativo`, `password`, `created_at`, `updated_at`) VALUES
-('071', 'erico', 'erico@gmail.com', '5', '1985-10-19', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-13 13:52:03', '2018-01-13 13:52:03'),
-('1234', 'pedrinho', 'pedrinho@pedrinho', '3', '2018-01-17', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-25 00:00:00', '2018-01-23 00:00:00');
+('07136887429', 'erico', 'erico@gmail.com', '5', '1985-10-19', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-13 13:52:03', '2018-01-13 13:52:03'),
+('83294569602', 'pedrinho', 'pedrinho@pedrinho', '3', '2018-01-17', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-25 00:00:00', '2018-01-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -101,16 +125,6 @@ CREATE TABLE `frequencia` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Extraindo dados da tabela `frequencia`
---
-
-INSERT INTO `frequencia` (`id_freq`, `data`, `id_turma`, `cpf_aluno`, `presenca`, `created_at`, `updated_at`) VALUES
-(11, '2018-01-23 00:00:00', 1, '1234', 0, '2018-01-13 11:58:27', '2018-01-21 17:10:00'),
-(12, '2018-01-24 14:09:00', 1, '071', 0, '2018-01-13 11:58:27', '2018-01-23 12:45:08'),
-(13, '2018-01-13 00:00:00', 2, '1234', 0, '2018-01-13 12:22:41', '2018-01-21 17:10:09'),
-(14, '2018-01-13 22:25:05', 2, '1234', 0, '2018-01-13 22:25:05', '2018-01-13 22:25:05');
-
 -- --------------------------------------------------------
 
 --
@@ -132,7 +146,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`name`, `email`, `password`, `ativo`, `cpf`, `created_at`, `updated_at`) VALUES
-('Joao', 'Joao@Joao', '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', 1, '123', '2018-01-23 00:00:00', '2018-01-24 00:00:00');
+('Joao', 'Joao@Joao', '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', 1, '85529166148', '2018-01-23 00:00:00', '2018-01-24 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -153,8 +167,9 @@ CREATE TABLE `turmas` (
 --
 
 INSERT INTO `turmas` (`id_turma`, `name_turma`, `cpf_prof`, `created_at`, `updated_at`) VALUES
-(1, 'Matematica', '123', '2018-01-17 00:00:00', '0000-00-00 00:00:00'),
-(2, 'quimica', '123', '2018-01-04 00:00:00', '2018-01-18 00:00:00');
+(1, 'Matematica', '85529166148', '2018-01-17 00:00:00', '0000-00-00 00:00:00'),
+(2, 'quimica', '85529166148', '2018-01-04 00:00:00', '2018-01-18 00:00:00'),
+(8, 'geografia', '85529166148', '2018-01-25 23:56:26', '2018-01-25 23:56:26');
 
 -- --------------------------------------------------------
 
@@ -175,9 +190,9 @@ CREATE TABLE `turmas_alunos` (
 --
 
 INSERT INTO `turmas_alunos` (`id_turmas_alunos`, `id_turma`, `cpf_aluno`, `created_at`, `updated_at`) VALUES
-(1, 1, '1234', '2018-01-10 00:00:00', '2018-01-25 00:00:00'),
-(2, 2, '1234', '2018-01-05 00:00:00', '2018-01-05 00:00:00'),
-(3, 1, '071', '2018-01-02 00:00:00', '2018-01-09 00:00:00');
+(1, 1, '83294569602', '2018-01-10 00:00:00', '2018-01-25 00:00:00'),
+(2, 2, '83294569602', '2018-01-05 00:00:00', '2018-01-05 00:00:00'),
+(3, 1, '07136887429', '2018-01-02 00:00:00', '2018-01-09 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -239,25 +254,21 @@ ALTER TABLE `turmas_alunos`
 --
 ALTER TABLE `desconhecidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `frequencia`
 --
 ALTER TABLE `frequencia`
-  MODIFY `id_freq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
+  MODIFY `id_freq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `turmas`
 --
 ALTER TABLE `turmas`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `turmas_alunos`
 --
 ALTER TABLE `turmas_alunos`
   MODIFY `id_turmas_alunos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
 --
 -- Constraints for dumped tables
 --
@@ -281,7 +292,6 @@ ALTER TABLE `turmas`
 ALTER TABLE `turmas_alunos`
   ADD CONSTRAINT `turmas_alunos_ibfk_1` FOREIGN KEY (`id_turma`) REFERENCES `turmas` (`id_turma`),
   ADD CONSTRAINT `turmas_alunos_ibfk_2` FOREIGN KEY (`cpf_aluno`) REFERENCES `aluno` (`cpf`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
