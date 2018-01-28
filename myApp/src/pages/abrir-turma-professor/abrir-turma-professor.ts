@@ -13,13 +13,18 @@ export class AbrirTurmaProfessorPage {
 	disciplina: any;
   lista: any;
 
+  cpfProf: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public restProvider: ServiceProvider) {
+    this.cpfProf = this.navParams.get("cpf");
+    console.log(this.navParams.get("cpf"))
     this.inicializaLista();
   }
 
   inicializaLista() {
-    this.restProvider.getApi('turma/'+localStorage.getItem("id_prof")).then(data => {
+    this.restProvider.getApi('turma/'+this.cpfProf).then(data => {
       this.lista = JSON.parse(data['_body']);
+      console.log(this.lista);
       if (this.lista[0]!= null) {
         this.initializeItems();
       }
@@ -27,7 +32,6 @@ export class AbrirTurmaProfessorPage {
   }
   initializeItems() {
     this.disciplina = this.lista;
-    //this.disciplina = [{id:1,name:'Matemativa'},{id:2,name:'Quimica'},{id:3,name:'Fisica'}];
   }
 
   AbrirTurma(){

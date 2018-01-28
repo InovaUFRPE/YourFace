@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Jan-2018 às 00:03
+-- Generation Time: 28-Jan-2018 às 02:02
 -- Versão do servidor: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -95,6 +95,7 @@ CREATE TABLE `coordenador` (
 --
 
 INSERT INTO `coordenador` (`name`, `email`, `password`, `ativo`, `cpf`, `created_at`, `updated_at`) VALUES
+('erico', '07136887429', '$2a$10$iv2Hz8OupNkf9f0UMhy68OW9Odl/zo78GfAj6ZAs/7K42EEQ7USEa', 1, '07136887429', '2018-01-28 00:26:49', '2018-01-28 00:26:49'),
 ('admin', 'admin@admin', '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', 1, '123', '2018-01-10 00:11:01', '2018-01-10 00:11:01');
 
 -- --------------------------------------------------------
@@ -146,7 +147,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`name`, `email`, `password`, `ativo`, `cpf`, `created_at`, `updated_at`) VALUES
-('Joao', 'Joao@Joao', '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', 1, '85529166148', '2018-01-23 00:00:00', '2018-01-24 00:00:00');
+('Joao Almeida', 'Joaoalmeida@ufpe.br', '$2a$10$ASy17E6nnQ/lxo5Kc4hi..AI1y.kEKY.BAPD7KSHGqpGFgirZ4cmm', 1, '85529166148', '2018-01-27 23:26:12', '2018-01-27 23:26:12');
 
 -- --------------------------------------------------------
 
@@ -167,9 +168,8 @@ CREATE TABLE `turmas` (
 --
 
 INSERT INTO `turmas` (`id_turma`, `name_turma`, `cpf_prof`, `created_at`, `updated_at`) VALUES
-(1, 'Matematica', '85529166148', '2018-01-17 00:00:00', '0000-00-00 00:00:00'),
-(2, 'quimica', '85529166148', '2018-01-04 00:00:00', '2018-01-18 00:00:00'),
-(8, 'geografia', '85529166148', '2018-01-25 23:56:26', '2018-01-25 23:56:26');
+(10, 'Quimica', '85529166148', '2018-01-27 23:26:34', '2018-01-27 23:26:34'),
+(13, 'Fisica', '85529166148', '2018-01-28 00:59:04', '2018-01-28 00:59:04');
 
 -- --------------------------------------------------------
 
@@ -190,9 +190,10 @@ CREATE TABLE `turmas_alunos` (
 --
 
 INSERT INTO `turmas_alunos` (`id_turmas_alunos`, `id_turma`, `cpf_aluno`, `created_at`, `updated_at`) VALUES
-(1, 1, '83294569602', '2018-01-10 00:00:00', '2018-01-25 00:00:00'),
-(2, 2, '83294569602', '2018-01-05 00:00:00', '2018-01-05 00:00:00'),
-(3, 1, '07136887429', '2018-01-02 00:00:00', '2018-01-09 00:00:00');
+(4, 10, '07136887429', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
+(5, 10, '83294569602', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
+(6, 13, '07136887429', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
+(7, 13, '83294569602', '2018-01-27 00:00:00', '2018-01-27 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -258,17 +259,17 @@ ALTER TABLE `desconhecidos`
 -- AUTO_INCREMENT for table `frequencia`
 --
 ALTER TABLE `frequencia`
-  MODIFY `id_freq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_freq` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `turmas`
 --
 ALTER TABLE `turmas`
-  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_turma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `turmas_alunos`
 --
 ALTER TABLE `turmas_alunos`
-  MODIFY `id_turmas_alunos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_turmas_alunos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

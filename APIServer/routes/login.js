@@ -16,11 +16,7 @@ export default(app)=>{
 			Profe.findOne({ where: { cpf } }).then(user => {
 				if (bcrypt.compareSync(password, user.password)) {
 					const payload = { cpf: user.cpf };
-					res.json({
-						success: true,
-						token: jwt.encode(payload, config.jwtSecret),
-						cpf: user.cpf
-					});
+					res.json({success: true,token: jwt.encode(payload, config.jwtSecret),cpf: user.cpf});
 				}else{
 					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
 					//res.sendStatus(HttpStatus.UNAUTHORIZED);
@@ -42,13 +38,7 @@ export default(app)=>{
 
 				if (bcrypt.compareSync(password, user.password)) {
 					const payload = { cpf: user.cpf };
-
-					res.json({
-						success: true,
-						token: jwt.encode(payload, config.jwtSecret),
-						cpf: user.cpf
-					});
-
+					res.json({success: true,token: jwt.encode(payload, config.jwtSecret),cpf: user.cpf});
 				}else{
 					res.json({success: false, message: 'Autenticação do Usuário falhou. Senha incorreta!'})
 					//res.sendStatus(HttpStatus.UNAUTHORIZED);

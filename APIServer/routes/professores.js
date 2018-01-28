@@ -4,7 +4,8 @@ export default(app)=>{
 	const profController = new ProfController(app.datasource.models.Professor);
 
 	app.route('/abrirAta/:idturma')
-	.all(app.auth.authenticate()).get((req, res) => {
+	.all(app.auth.authenticate())
+	.get((req, res) => {
 		console.log(req.params.idturma)
 		const sql = `call AbrirTurma(?)`;
 		app.datasource['sequelize'].query(sql,{ replacements: [req.params.idturma], type: app.datasource['sequelize'].QueryTypes.SELECT }

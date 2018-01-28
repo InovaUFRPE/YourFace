@@ -29,9 +29,8 @@ export class LoginPage {
       const Professor = JSON.parse(result['_body']);
       if (Professor.token) {
         localStorage.setItem("token", Professor.token);
-        localStorage.setItem("id_prof", Professor.cpf);
         this.showAlert()
-        this.navCtrl.push(HomeProfessorPage);
+        this.navCtrl.push(HomeProfessorPage,{cpf:Professor.cpf});
       }else{
         console.log("erro ", Professor.message);
         this.showAlertErro()

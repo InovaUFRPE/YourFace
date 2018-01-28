@@ -16,18 +16,18 @@ export class HomeProfessorPage {
   cpfProf: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.cpfProf = localStorage.getItem("id_prof")
+    this.cpfProf = this.navParams.get("cpf");
   }
 
   goToChamadaPage() {
     ///abrirAta:idturma
-    this.navCtrl.push(AbrirTurmaProfessorPage);
+    this.navCtrl.push(AbrirTurmaProfessorPage,{cpf:this.cpfProf});
   }
   goToFrequenciaPage() {
-    this.navCtrl.push(DisciplinaProfessorPage,{'tipo':'A','prof':this.cpfProf});
+    this.navCtrl.push(DisciplinaProfessorPage,{tipo:'A',prof:this.cpfProf});
   }
   abrirRelatorio() {
-    this.navCtrl.push(DisciplinaProfessorPage,{'tipo':'B','prof':this.cpfProf});
+    this.navCtrl.push(DisciplinaProfessorPage,{tipo:'B',prof:this.cpfProf});
   }
   sair() {
     localStorage.clear();

@@ -69,7 +69,7 @@ export class ServiceProvider {
   getApiFrequencia(UrlApi) {
     UrlApi= this.UrlServer+UrlApi;
     return new Promise(resolve => {
-      this.http.get(UrlApi).subscribe(data => {
+      this.http.get(UrlApi,this.createRequestOptions()).subscribe(data => {
         resolve(data);
       }, err => {
         console.log(err);
@@ -79,7 +79,7 @@ export class ServiceProvider {
 
   private createRequestOptions() {
     let headers = new Headers();
-    headers.append("Authorization", 'JWT '+ localStorage.getItem("token"));
+    headers.append("Authorization", 'JWT '+localStorage.getItem("token"));
     headers.append("Content-Type", "application/json");
     return new RequestOptions({ headers: headers });
   }
