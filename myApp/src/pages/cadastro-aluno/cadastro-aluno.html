@@ -6,8 +6,8 @@
 
 <ion-content padding>
   <h1>{{titulos}}</h1>
-  <ion-list> 
-    
+  <ion-list>
+
     <ion-item>
       <ion-label floating>Nome Completo:</ion-label>
       <ion-input type="text" [(ngModel)]="dados.name" id="inputName" autofocus required></ion-input>
@@ -28,7 +28,11 @@
       <ion-input type="mail" [(ngModel)]="dados.emailConf" class="inputEmail" required></ion-input>
     </ion-item>
 
-    
+    <ion-item>
+      <ion-label floating>Matricola:</ion-label>
+      <ion-input type="number" maxlength="8" [(ngModel)]="dados.matricola" class="inputMatricola" required></ion-input>
+    </ion-item>
+
     <ion-item>
       <ion-label floating>Curso/série:</ion-label>
       <ion-input type="text" [(ngModel)]="dados.curso" class="inputCurso" required></ion-input>
@@ -38,7 +42,7 @@
       <ion-label>Data Nascimento:</ion-label>
       <ion-input type="date" [(ngModel)]="dados.dataNascimento" class="inputDataNascimento" required></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label floating>Senha:</ion-label>
       <ion-input type="password" [(ngModel)]="dados.password" class="inputSenha" required></ion-input>
@@ -55,4 +59,4 @@
     <button ion-button block (click)="cadastrarEstudante()">Cadastrar</button>
     <br>
     <button ion-button block (click)="goToHomePage2()">Cancelar</button>
-  </div> 
+  </div>
