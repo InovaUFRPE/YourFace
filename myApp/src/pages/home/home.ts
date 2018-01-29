@@ -20,46 +20,36 @@ import { CadastraDisciplinaPage } from '../cadastra-disciplina/cadastra-discipli
   templateUrl: 'home.html'
 })
 export class HomePage {
-
   constructor(
     public navCtrl: NavController,
     public alertHomeCtrl:AlertController) {
   }
-
-
   abrirCadastroAluno(){
     this.navCtrl.push(CadastroAlunoPage)
   }
   goToCadastroPage() {
     this.navCtrl.push(CadastroPage);
   }
-
   abrirCadastroProfessor(){
     this.navCtrl.push(CadastroProfessorPage)
   }
-
   abrirRelatorio(){
     this.navCtrl.push(TurmasRelatorioPage)
   }
-
-  sair(){
-    localStorage.clear();
-    this.navCtrl.setRoot(IntroPage)
-  }
-
   removerUsuarios(){
     this.navCtrl.push(RemoverUsuariosPage)
   }
-
   listarAlunos(){
     this.navCtrl.push(ListarAlunosPage)
   }
-
   listarProfessor() {
     this.navCtrl.push(ListarProfessorPage)
   }
-
   CadastraDisciplina(){
     this.navCtrl.push(CadastraDisciplinaPage)
+  }
+  sair(){
+    localStorage.clear();
+    this.navCtrl.setRoot(IntroPage)
   }
 }

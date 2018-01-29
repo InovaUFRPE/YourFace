@@ -29,10 +29,10 @@ export default (app) => {
 			models:{}
 		}
 		database.models = loadModels(sequelize);
-	
-		sequelize.sync().done(() => {
+
+		/*sequelize.sync().done(() => {
 			database;
-			
+
 			database['models']['Coordenador'].findOne({where: {cpf:'123'}})
 			.then(result => console.log(result['_previousDataValues'])).catch(() =>{
 				database['models']['Coordenador'].create({
@@ -42,8 +42,8 @@ export default (app) => {
 					cpf:'123'
 				});
 			});
-	
-		});
+
+		});*/
 	}
 	return database;
 }

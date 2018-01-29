@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ServiceProvider } from '../../providers/service/service';
-
+import { HomeProfessorPage } from '../home-professor/home-professor';
 
 @IonicPage()
 @Component({
@@ -37,6 +37,7 @@ export class AbrirTurmaProfessorPage {
   AbrirTurma(){
     if(this.turma!=null){
       this.restProvider.getApi('abrirAta/'+this.turma).then(data => {});
+      this.navCtrl.push(HomeProfessorPage);
     }
   }
 

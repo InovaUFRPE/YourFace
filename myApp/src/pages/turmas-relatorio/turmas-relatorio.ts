@@ -12,12 +12,9 @@ export class TurmasRelatorioPage {
   items: any;
   lista: any;
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCtrl: AlertController,
-    public restProvider: ServiceProvider
-  ) {this.inicializaLista();}
+  constructor(public navCtrl: NavController,public navParams: NavParams,public alertCtrl: AlertController,public restProvider: ServiceProvider) {
+    this.inicializaLista();
+  }
 
   inicializaLista() {
     this.restProvider.getApi('turma').then(data => {
@@ -26,7 +23,6 @@ export class TurmasRelatorioPage {
         this.initializeItems();
       }
     });
-
   }
 
   initializeItems() {
@@ -46,5 +42,4 @@ export class TurmasRelatorioPage {
   abrirRelatorio(nome, id){
     this.navCtrl.push(RelatorioPage, {'idTurma': id,'nomeTurma':nome})
   }
-
 }
