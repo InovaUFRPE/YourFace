@@ -103,7 +103,7 @@ export class ListarAlunosPage {
         {
           name: 'password',
           placeholder: 'password',
-          value: user.password
+          //value: user.password
         },
 
       ],
