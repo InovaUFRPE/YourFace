@@ -37,7 +37,7 @@ OPEN cur1;
 LOOP
 
 	FETCH cur1 INTO v_aluno;
-	
+
 	INSERT INTO frequencia (data,id_turma,cpf_aluno,presenca,created_at,updated_at) VALUES (NOW(),idturma,v_aluno,0,now(),now());
 
 END LOOP;
@@ -58,6 +58,7 @@ CREATE TABLE `aluno` (
   `cpf` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+	`matricola` int(11) NOT NULL,
   `curso` varchar(255) NOT NULL,
   `dataNascimento` date NOT NULL,
   `ativo` tinyint(1) DEFAULT '1',
@@ -70,9 +71,8 @@ CREATE TABLE `aluno` (
 -- Extraindo dados da tabela `aluno`
 --
 
-INSERT INTO `aluno` (`cpf`, `name`, `email`, `curso`, `dataNascimento`, `ativo`, `password`, `created_at`, `updated_at`) VALUES
-('07136887429', 'erico', 'erico@gmail.com', '5', '1985-10-19', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-13 13:52:03', '2018-01-13 13:52:03'),
-('83294569602', 'pedrinho', 'pedrinho@pedrinho', '3', '2018-01-17', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-25 00:00:00', '2018-01-23 00:00:00');
+INSERT INTO `aluno` (`cpf`, `name`, `email`, `matricola`,`curso`, `dataNascimento`, `ativo`, `password`, `created_at`, `updated_at`) VALUES
+('83294569602', 'pedrinho', 'pedrinho@pedrinho', 1718,'3', '2018-01-17', 1, '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', '2018-01-25 00:00:00', '2018-01-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,6 @@ CREATE TABLE `coordenador` (
 --
 
 INSERT INTO `coordenador` (`name`, `email`, `password`, `ativo`, `cpf`, `created_at`, `updated_at`) VALUES
-('erico', '07136887429', '$2a$10$iv2Hz8OupNkf9f0UMhy68OW9Odl/zo78GfAj6ZAs/7K42EEQ7USEa', 1, '07136887429', '2018-01-28 00:26:49', '2018-01-28 00:26:49'),
 ('admin', 'admin@admin', '$2a$10$biLnKJpw35o7nIdVG1Y7YuSigMTUPcj/Z/RjtC713jT0Y0zzDh4cW', 1, '123', '2018-01-10 00:11:01', '2018-01-10 00:11:01');
 
 -- --------------------------------------------------------
@@ -190,9 +189,7 @@ CREATE TABLE `turmas_alunos` (
 --
 
 INSERT INTO `turmas_alunos` (`id_turmas_alunos`, `id_turma`, `cpf_aluno`, `created_at`, `updated_at`) VALUES
-(4, 10, '07136887429', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
 (5, 10, '83294569602', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
-(6, 13, '07136887429', '2018-01-27 00:00:00', '2018-01-27 00:00:00'),
 (7, 13, '83294569602', '2018-01-27 00:00:00', '2018-01-27 00:00:00');
 
 --
