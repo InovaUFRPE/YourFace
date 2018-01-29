@@ -15,7 +15,7 @@
         <img src="assets/imgs/avatar.png">
       </ion-avatar>
       <p>Nome: {{user.name}}</p>
-      <p>Matricola: {{user.cpf}}</p>
+      <p>Matrícula: {{user.cpf}}</p>
       <p *ngIf="user.presenca===1">Presente</p>
       <p *ngIf="user.presenca===0">Falta</p>
       <p>Data: {{user.data|date:'dd/MM/yyyy, HH:mm'}}</p>
