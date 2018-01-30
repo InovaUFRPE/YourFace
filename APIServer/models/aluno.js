@@ -13,6 +13,14 @@ export default  (sequelize, DataTypes) => {
 				notEmpty: true,
 			},
 		},
+		matricola:{
+			type: DataTypes.INTEGER,
+			allowNull: false,
+			validate: {
+				notEmpty: true,
+			},
+		},
+
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,

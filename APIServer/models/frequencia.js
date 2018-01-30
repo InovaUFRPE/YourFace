@@ -15,8 +15,6 @@ export default  (sequelize, DataTypes) => {
 				notEmpty: true,
 			},
 		},
-
-
 		id_turma:{
 			type: DataTypes.INTEGER,
 			references: {
