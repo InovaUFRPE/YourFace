@@ -1,7 +1,7 @@
 <h1> <p align="center"> YourFace </p> </h1>
 
 <p align="center">
-    <img alt="" src="https://github.com/InovaUFRPE/YourFace/blob/dev/intro01.png" width=""/>
+    <img alt="" src="https://github.com/InovaUFRPE/YourFace/blob/dev/intro01.png"/>
 </p>
 
 <h2>
@@ -38,7 +38,7 @@ http://prntscr.com/h50zeu
 
 9. Modulos usados no reconecedor >
 
-pip install Pillow
+```pip install Pillow
 pip install opencv-contrib-python
 pip install opencv-python
-pip install pymysql
+pip install pymysql```
