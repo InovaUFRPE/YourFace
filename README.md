@@ -8,17 +8,7 @@
 
 1. Baixe e instale o [Node.js](https://nodejs.org/dist/v8.8.1/win-x64/node.exe).
 
-2. Abra o CMD e rode: ```> npm install -g cordova ionic
-
-
-pip install Pillow
-
-pip install opencv-contrib-python
-
-pip install opencv-python
-
-pip install pymysql```
-
+2. Abra o CMD e rode: ```> npm install -g cordova ionic```
 
 3. Baixe o [Visual Studio Code](https://go.microsoft.com/fwlink/?Linkid=852157).
 
@@ -38,3 +28,11 @@ http://prntscr.com/h50ytc
 8. Será solicitado a instalação de modulos, aceite e espere que o servidor seja iniciado no seu navegador padrão.
 http://prntscr.com/h50za7
 http://prntscr.com/h50zeu
+
+
+9. Modulos usados no reconecedor >
+
+pip install Pillow
+pip install opencv-contrib-python
+pip install opencv-python
+pip install pymysql
