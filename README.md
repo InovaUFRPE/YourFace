@@ -1,14 +1,6 @@
-<h1> <p align="center"> YourFace </p> </h1>
-
-<p align="center">
-    <img alt="" src="https://github.com/InovaUFRPE/YourFace/blob/dev/intro01.png"/>
-</p>
-
-<h2>
-  <p align="center">
-    Repositório do Sistema automatizado de frequência de estudantes via reconhecimento facial UFRPE
-  </p>
-</h2>
+<p align="center"><img alt="" src="https://github.com/InovaUFRPE/YourFace/blob/dev/intro01.png"/></p>
+<h1><p align="center"> YourFace </p> </h1>
+<h2><p align="center">Repositório do Sistema automatizado de frequência de estudantes via reconhecimento facial UFRPE</p></h2>
 
 ### Passo a passo para a correta instalação do Ionic Framework
 
