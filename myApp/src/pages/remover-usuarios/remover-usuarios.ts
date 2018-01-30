@@ -104,8 +104,7 @@ export class RemoverUsuariosPage {
         },
         {
           name: 'password',
-          placeholder: 'password',
-          value: user.password
+          placeholder: 'password'
         }
       ],
       buttons: [

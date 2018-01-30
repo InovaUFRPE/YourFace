@@ -101,8 +101,7 @@ export class ListarProfessorPage {
         },
         {
           name: 'password',
-          placeholder: 'password',
-          value: user.password
+          placeholder: 'password'
         }
 
       ],
