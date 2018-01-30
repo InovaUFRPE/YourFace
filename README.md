@@ -38,9 +38,9 @@ http://prntscr.com/h50zeu
 
 9. Modulos usados no reconecedor >
 
-```pip install Pillow
-pip install opencv-contrib-python
-pip install opencv-python
-pip install pymysql```
+```pip install Pillow```
+```pip install opencv-contrib-python```
+```pip install opencv-python```
+```pip install pymysql```
 
 10. 
