@@ -42,3 +42,5 @@ http://prntscr.com/h50zeu
 pip install opencv-contrib-python
 pip install opencv-python
 pip install pymysql```
+
+10. 
