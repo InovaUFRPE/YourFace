@@ -17,7 +17,7 @@ import { InfomacaoDiretorPage } from '../pages/infomacao-diretor/infomacao-diret
 import { RemoverUsuariosPage } from '../pages/remover-usuarios/remover-usuarios';
 
 import { CadastroAlunoPage } from '../pages/cadastro-aluno/cadastro-aluno';
-import { LoginAlunoPage } from '../pages/login-Aluno/login-Aluno';
+import { LoginAlunoPage } from '../pages/login-aluno/login-aluno';
 import { FrequenciaAlunoPage } from '../pages/frequencia-aluno/frequencia-aluno';
 import { ListarAlunosPage } from '../pages/listar-alunos/listar-alunos';
 
