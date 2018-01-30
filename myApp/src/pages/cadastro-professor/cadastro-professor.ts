@@ -59,7 +59,7 @@ export class CadastroProfessorPage {
       return;
     }
     if (cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -92,11 +92,14 @@ export class CadastroProfessorPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf) == false) {
-      alert('Cpf inválido.');
-      return;
-    }
-
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
+    //if (cpf.lenght != 4) {
+    //  alert('Matrícula inválida.');
+    //  return;
+   //}
     // Cria o objeto usuario e o cadastro no BD
     var usuarioProfessor: object = {
       name: nomeUsuario,
@@ -127,7 +130,7 @@ export class CadastroProfessorPage {
   showAlertErro() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro não realizado.',
-      subTitle: 'Algun campo no cadastro está errado e/ou cpf já cadastrado.',
+      subTitle: 'Algum campo no cadastro está errado e/ou Matrícula já cadastrada.',
       buttons: ['OK']
     });
     alert.present();

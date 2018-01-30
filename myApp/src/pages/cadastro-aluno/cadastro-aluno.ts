@@ -48,6 +48,13 @@ export class CadastroAlunoPage {
     return true;
   }
 
+  testeMatricula(strCPF){
+    if (strCPF.lenght == 4) return true;
+
+    return false;
+
+  }
+
   cadastrarEstudante() {
 
     var name = this.dados.name;
@@ -64,7 +71,7 @@ export class CadastroAlunoPage {
       return;
     }
     if (cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -83,10 +90,12 @@ export class CadastroAlunoPage {
       //alert('Cpf inválido.');
       //return;
     //}
-    if (cpf.lenght != 4) {
-      alert('Cpf inválido.');
-      return;
-    }
+
+    //if (this.testeMatricula(cpf) == false){
+
+      //alert('ooooo inválida.');
+     // return;
+    //}
     if (curso == undefined) {
       alert('O campo curso/série é um campo obrigatório.');
       return;
@@ -138,7 +147,7 @@ export class CadastroAlunoPage {
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',
-      subTitle: 'Parabéns por cadastra um ESTUDANTE muito importante para sua instituiçao!',
+      subTitle: 'Parabéns por cadastrar um ESTUDANTE! Muito importante para sua instituiçao!',
       buttons: ['OK']
     });
     alert.present();
@@ -146,7 +155,7 @@ export class CadastroAlunoPage {
   showAlertErro() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro não realizado !',
-      subTitle: 'Algun campo no cadastro está errado e/ou cpf já cadastrado.',
+      subTitle: 'Algum campo no cadastro está errado e/ou Matrícula já cadastrada.',
       buttons: ['OK']
     });
     alert.present();

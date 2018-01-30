@@ -62,7 +62,7 @@ export class CadastroPage {
       return;
     }
     if(cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -78,7 +78,7 @@ export class CadastroPage {
       return;
     }
     if (SenhaConf == undefined) {
-      alert('A senha de confimação é um campo obrigatório.');
+      alert('A senha de confirmação é um campo obrigatório.');
       return;
     }
     if (senha.length < 8) {
@@ -95,10 +95,14 @@ export class CadastroPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf)==false) {
-      alert('Cpf inválido.');
-      return;
-    }
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
+    //if (cpf.lenght != 4) {
+    //  alert('Matrícula inválida.');
+    //  return;
+    //}
     // Cria o objeto usuario e o cadastro no BD
     var usuarioDiretor: object = {
       name: name,
