@@ -14,7 +14,6 @@ export class CadastroAlunoPage {
     name: null,
     cpf: null,
     email: null,
-    matricola:null,
     emailConf: null,
     curso: null,
     dataNascimento: null,
@@ -62,7 +61,6 @@ export class CadastroAlunoPage {
     var cpf = this.dados.cpf;
     var email = this.dados.email;
     var emailConf = this.dados.emailConf;
-    var matricola = this.dados.matricola;
     var curso = this.dados.curso;
     var dataNascimento = this.dados.dataNascimento;
     var senha = this.dados.password;
@@ -122,14 +120,6 @@ export class CadastroAlunoPage {
       alert('As senhas não são iguais.')
       return;
     }
-    if (matricola == undefined ) {
-      alert('A Matricola é um campo obrigatório.')
-      return;
-    }
-    if (matricola.length < 8) {
-      alert('As Matricola deve ter pelo menos "8" caracteres.')
-      return;
-    }
 
 
 
@@ -140,7 +130,6 @@ export class CadastroAlunoPage {
       name: name,
       cpf: cpf,
       email: email,
-      matricola: matricola,
       curso: curso,
       dataNascimento: dataNascimento,
       password: senha,
