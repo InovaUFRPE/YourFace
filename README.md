@@ -8,7 +8,17 @@
 
 1. Baixe e instale o [Node.js](https://nodejs.org/dist/v8.8.1/win-x64/node.exe).
 
-2. Abra o CMD e rode: ```> npm install -g cordova ionic```
+2. Abra o CMD e rode: ```> npm install -g cordova ionic
+
+
+pip install Pillow
+
+pip install opencv-contrib-python
+
+pip install opencv-python
+
+pip install pymysql```
+
 
 3. Baixe o [Visual Studio Code](https://go.microsoft.com/fwlink/?Linkid=852157).
 
