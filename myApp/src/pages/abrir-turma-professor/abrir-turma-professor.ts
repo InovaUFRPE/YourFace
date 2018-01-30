@@ -17,7 +17,7 @@ export class AbrirTurmaProfessorPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public restProvider: ServiceProvider) {
     this.cpfProf = this.navParams.get("cpf");
-    console.log(this.navParams.get("cpf"))
+    //console.log(this.navParams.get("cpf"))
     this.inicializaLista();
   }
 
@@ -35,7 +35,9 @@ export class AbrirTurmaProfessorPage {
   }
 
   AbrirTurma(){
-    if(this.turma!=null){
+    if(this.turma === undefined){
+      console.log("erro campo vazio!")
+    }else{
       this.restProvider.getApi('abrirAta/'+this.turma).then(data => {});
       this.navCtrl.push(HomeProfessorPage);
     }
