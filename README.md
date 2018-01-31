@@ -20,13 +20,9 @@
 
 ### Passo a passo para a correta instalação do Reconhecedor
 
-1. Modulos usados no reconecedor >
-
+1. Modulos usados no reconecedor 
 ```> pip install Pillow
-
 > pip install opencv-contrib-python
-
 > pip install opencv-python
-
 > pip install pymysql
 ```
