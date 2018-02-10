@@ -1,24 +1,15 @@
-<!--
-  Generated template for the IntroPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
 <ion-content padding>
-  <ion-slides pager>
-
-    <ion-slide class="intro_slide">
+  <ion-card>
+		<ion-card-header>
       <img src="assets/imgs/intro01.png" alt="">
-      <h2>YouFace</h2>
-      <div>
-        <br>
-        <p>
-          {{objetoMensagem.mensagem}}
-        </p>
-      </div>
-      <a (click)="goToLoginPage()">Continuar...</a>
-    </ion-slide>
-
-  </ion-slides>
+    </ion-card-header>
+    <ion-card-content >
+      <ion-list no-line>
+        <h2>YouFace</h2>
+        <p>{{objetoMensagem.mensagem}}</p>
+        <button ion-button block color="secondary" (click)="goToLoginPage()">Docente</button>
+        <button ion-button block color="primary" (click)="goToLoginAlunoPage()">Discente</button>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

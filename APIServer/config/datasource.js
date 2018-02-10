@@ -1,0 +1,49 @@
+import Sequelize from 'sequelize';
+import fs from 'fs';
+import path from 'path';
+
+let database = null;
+
+const loadModels = (sequelize) => {
+  const dir = path.join(__dirname, '../models');
+  const models = [];
+  fs.readdirSync(dir).forEach(file => {
+    const modelDir = path.join(dir, file);
+    const model = sequelize.import(modelDir);
+    models[model.name] = model;
+  });
+  return models;
+};
+export default (app) => {
+	if(!database){
+		const config = app.config;
+		const sequelize = new Sequelize(
+			config.database,
+			config.username,
+			config.password,
+			config.params
+		);
+		database = {
+			sequelize,
+			Sequelize,
+			models:{}
+		}
+		database.models = loadModels(sequelize);
+
+		/*sequelize.sync().done(() => {
+			database;
+
+			database['models']['Coordenador'].findOne({where: {cpf:'123'}})
+			.then(result => console.log(result['_previousDataValues'])).catch(() =>{
+				database['models']['Coordenador'].create({
+					name: 'admin',
+					email: 'admin@admin',
+					password:'123',
+					cpf:'123'
+				});
+			});
+
+		});*/
+	}
+	return database;
+}

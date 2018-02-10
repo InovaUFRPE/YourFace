@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { LoginAlunoPage } from '../login-aluno/login-aluno';
 
 @IonicPage()
 @Component({
@@ -16,11 +17,15 @@ export class IntroPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
+  ionViewDidLoad() {}
+  
+  goToLoginAlunoPage() {
+    localStorage.clear();
+    this.navCtrl.push(LoginAlunoPage);
   }
 
   goToLoginPage() {
+    localStorage.clear();
     this.navCtrl.push(LoginPage);
   }
 }

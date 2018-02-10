@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>AbrirTurma-professor</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Disciplina</ion-label>
+  <ion-select [(ngModel)]="turma">
+    <ion-option *ngFor="let item of disciplina" [value]="item.id_turma">{{item.name_turma}}</ion-option>
+  </ion-select>
+</ion-item>
+
+
+<br>
+<button ion-button block (click)="AbrirTurma()">Confirmar</button>
+<br>
+
+</ion-content>

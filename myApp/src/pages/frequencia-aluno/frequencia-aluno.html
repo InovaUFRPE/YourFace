@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Home do Aluno
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="imagemDeFundo">
+  <ion-card id="homeDoAluno-card22">
+    <ion-list>
+      <ion-item color="positive" id="homeDoAluno-list-item34">
+        <ion-thumbnail item-left>
+          <img src="../assets/imgs/avatar.png"/>
+        </ion-thumbnail>
+        <h2>
+          Nome: {{aluno.name}}
+        </h2>
+        <p>Mat: {{aluno.cpf}}</p>
+        <p>Total de faltas: {{faltasTotal}}</p>
+
+      </ion-item>
+
+
+      <form id="homeDoAluno-form12">
+        <div class="spacer" style="width:300px;height:50px;" id="homeDoAluno-spacer2"></div>
+      </form>
+
+      <!--<button id="homeDoAluno-button4" ion-button color="balanced" block style="font-size:16px;border-radius:5px 5px 5px 5px;" on-click="goToFrequNcia()">Frequência</button>-->
+      <ion-item *ngFor="let c of items">
+        <p>Turma: {{c.name_turma}}</p>
+        <p>presenca: {{c.presenca }}</p>
+        <p>data: {{c.data | date:'dd/MM/yyyy, HH:mm:ss '}}</p>
+      </ion-item>
+
+
+    </ion-list>
+  </ion-card>
+
+
+
+
+
+<!--
+  <ion-list>
+    <ion-item *ngFor="let c of items">
+      <ion-avatar item-left>
+        <img src="../assets/imgs/avatar.png">
+      </ion-avatar>
+      <h2>{{c.name}}</h2>
+      <p>Cpf: {{c.cpf}}</p>
+      <p>Turma: {{c.name_turma}}</p>
+      <p>presenca: {{c.presenca }}</p>
+      <p>data: {{c.data | date:'dd/MM/yyyy, HH:mm:ss '}}</p>
+    </ion-item>
+  </ion-list>
+<br>
+  <button ion-button block (click)="sair()">Sair</button>
+<br>
+
+-->
+</ion-content>

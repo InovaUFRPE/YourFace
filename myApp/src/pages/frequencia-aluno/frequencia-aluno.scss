@@ -1,0 +1,15 @@
+page-frequencia-aluno {
+
+    .imagemDeFundo {   overflow:hidden;
+		background-image: url('../assets/imgs/bgAluno.jpg');
+		height: 100%;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+    }
+    h2 {
+        font-size: 21pt;
+        text-align: left;
+        color: #05aefd;
+    }
+}

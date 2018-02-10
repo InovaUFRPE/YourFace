@@ -1,3 +1,26 @@
 page-intro {
-
+  ion-card.card {
+    width: 100%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top:0px;
+    left: 0;
+    right: 0;
+    box-shadow: none;
+  }
+  .scroll-content {
+    overflow: hidden;
+    align-content: center;
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  h2{
+    padding-top: 50px;
+  }
+  a, p, ion-card-header .card-header {
+    color: #000!important;
+  }
 }

@@ -1,5 +1,5 @@
 page-login {
-	.background{
+	.background {
 		background-image: url('../assets/imgs/bg.jpg');
 		height: 100%;
 		background-position: center;
@@ -7,70 +7,77 @@ page-login {
 		background-size: cover;
 	}
 
-	.scroll-content{
-		aling-content:center;
-		display: flex;
-		flex-direction:column;
-		text-align: center;
-	}
+  	.scroll-content {
+  		overflow: hidden;
+  		align-content: center;
+  		/*display: flex;*/
+  		flex-direction: column;
+  		justify-content: center;
+  		text-align: center;
+  	}
 
+  	ion-card.card {
+		  width: 90%;
+		  position: absolute;
+		  margin-left: auto;
+		  margin-right: auto;
+		  top:50px;
+		  left: 0;
+		  right: 0;
+		  box-shadow: none;
+  		background: rgba(255, 255, 255, 0.5);
+  		border-radius: 5px;
+  	}
 
-	ion-card.card{
-		box-shadow: none;
-		background: rgba(0,0,0,0.5);
-		border-radius: 5px;
-	}
+  	a, p,
+  	ion-card-header .card-header {
+  		color: #fff!important;
+  	}
 
-	a, p,
-	ion-card-header.card-header {
-		color: #fff;
-	}
+  	.list > .item-block:first-child {
+  		border: medium none;
+  	}
 
-	.list > .item-block:first-child {
-		border: medium none;
-	}
+  	.item {
+  		margin-bottom: 10px;
+  		background: rgba(0,0, 0, 0.0);
+  		border: medium none;
 
-	.item{
-		margin-bottom: 10px;
-		background: rgba(255,255,255,0.5);
-		border: medium none;
+  		.text-input, {
+  			color: #000;
+  		}
 
-		.text-input, {
-			color: #000;
-		}
-		
+  		input::-moz-placeholder  {
+  			color: #fff!important;
+  		}
 
-		input::-moz-placeholder{
-			color:#fff!important;
-		}
+  		input:-moz-placeholder {
+  			color: #fff!important;
+  		}
 
-		input:-moz-placeholder{
-			color:#fff!important;
-		}
+  		*::-webkit-input-placeholder  {
+  			color: #fff!important;
+  		}
 
-		*:-moz-placeholder{
-			color:#fff!important;
-		}
+  		*:-ms-input-placeholder  {
+  			color: #fff!important;
+  		}
 
-		*:-ms-input-placeholder{
-			color:#fff!important;
-		}
+  		*:-moz-placeholder  {
+  			color: #fff!important;
+  		}
+  	}
+    img{
+      margin-top: 5%;
+      height: 40%;
+    }
+  	.icon {
 
-		*::-webkit-input-placeholder{
-			color:#fff!important;
-		}
-		
-	}
-	.icon{
-		padding-right: 10px;
-	}
+  		padding-right: 10px;
+  	}
 
-	img {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	ion-navbar {
-		color: #0611b4;
-	}
+  	.bottom {
+  		position: absolute;
+  		bottom: 0;
+  	}
 }

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>cadastrar-disciplina</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Professores</ion-label>
+    <ion-select [(ngModel)]="cpf_prof">
+      <ion-option *ngFor="let item of professores" [value]="item.cpf">{{item.name}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Nome da Disciplina:</ion-label>
+    <ion-input type="text" [(ngModel)]="name_disciplina" autofocus required></ion-input>
+  </ion-item>
+
+  <br>
+  <button ion-button block (click)="cadastraturma()">Confirmar</button>
+  <br>
+
+</ion-content>

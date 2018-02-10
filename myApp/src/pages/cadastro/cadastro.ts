@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -11,6 +11,22 @@ import 'rxjs/add/operator/map';
   templateUrl: 'cadastro.html',
 })
 export class CadastroPage {
+  public dados = {
+    name: null,
+    cpf: null,
+    password: null,
+    passwordConf: null,
+    email: null,
+    emailConf: null,
+  };
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCadastroCtrl: AlertController,
+    public restProvider: ServiceProvider) {
+  }
+
   TestaCPF(strCPF) {
     let Soma;
     let Resto;
@@ -32,20 +48,6 @@ export class CadastroPage {
     return true;
   }
 
-  public dados = {
-    name: null,
-    cpf: null,
-    password: null,
-    passwordConf: null,
-    email: null,
-    emailConf: null,
-  };
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public alertCadastroCtrl: AlertController,
-    public http:Http) {
-  }
   fazerCadastro(): boolean {
     // Pega as informações do usuário
     var name = this.dados.name;
@@ -60,7 +62,7 @@ export class CadastroPage {
       return;
     }
     if(cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -76,7 +78,7 @@ export class CadastroPage {
       return;
     }
     if (SenhaConf == undefined) {
-      alert('A senha de confimação é um campo obrigatório.');
+      alert('A senha de confirmação é um campo obrigatório.');
       return;
     }
     if (senha.length < 8) {
@@ -93,10 +95,14 @@ export class CadastroPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf)==false) {
-      alert('Cpf inválido.');
-      return;
-    }
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
+    //if (cpf.lenght != 4) {
+    //  alert('Matrícula inválida.');
+    //  return;
+    //}
     // Cria o objeto usuario e o cadastro no BD
     var usuarioDiretor: object = {
       name: name,
@@ -105,24 +111,21 @@ export class CadastroPage {
       email: email,
     };
 
-    this.http.post('http://localhost:3000/coordenador/create', usuarioDiretor).map(res => res.json())
-    .subscribe(res => {
-      console.log(res);
-      if (res.error){
-      this.showAlertErro()
-      }else{
-        this.showAlert()
-        this.navCtrl.setRoot(HomePage);;
-      }
-    }, (error) => {
-      console.log("erro " + error);
+    this.restProvider.postApi('coordenador', usuarioDiretor).then((result) => {
+      console.log(result);
+      this.showAlert();
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      this.showAlertErro();
     });
   }
+
 
   goToHomePage2() {
     this.navCtrl.setRoot(HomePage);
   }
-  
+
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',

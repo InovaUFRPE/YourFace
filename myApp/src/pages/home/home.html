@@ -1,31 +1,31 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Administrador</ion-title>
-  </ion-navbar>
+<ion-header >
+    <ion-navbar color="primary">
+        <ion-title>Administrador</ion-title>
+    </ion-navbar>
 </ion-header>
-
 
 <ion-content padding>
   <div>
-    <h2>Administrador</h2>
-    <h3>Seja bem vindo ao YourFace</h3>
+    <h3>Seja bem vindo </h3>
     <br>
   </div>
-  
-  <button ion-button block (click)="abrirCadastroProfessor()">Cadastro Professor</button>
+
+  <button ion-button block color="secondary"  (click)="abrirCadastroProfessor()">Cadastro Professor</button>
   <br>
-  <button ion-button block (click)="abrirCadastroAluno()">Cadastro Aluno</button>
+  <button ion-button block color="secondary"  (click)="abrirCadastroAluno()">Cadastro Aluno</button>
   <br>
-  <button ion-button block (click)="goToCadastroPage()">Cadastro Diretor</button>
+  <button ion-button block color="secondary"  (click)="goToCadastroPage()">Cadastro Diretor</button>
   <br>
-  <button ion-button block (click)="abrirRelatorio()">Relatório</button>
+  <button ion-button block color="secondary" (click)="CadastraDisciplina()">Cadastra Disciplina</button>
   <br>
-  <button ion-button block (click)="removerUsuarios()">Editar/Remover  Coordenador</button>
+  <button ion-button block  (click)="abrirRelatorio()">Relatório</button>
   <br>
-  <button ion-button block (click)="listarAlunos()">Editar/Remover Aluno</button>
+  <button ion-button block  (click)="removerUsuarios()">Editar/Remover  Coordenador</button>
   <br>
-  <button ion-button block (click)="listarProfessor()">Editar/Remover Professor</button>
+  <button ion-button block  (click)="listarAlunos()">Editar/Remover Aluno</button>
   <br>
-  <button ion-button block (click)="sair()">Sair</button>
+  <button ion-button block   (click)="listarProfessor()">Editar/Remover Professor</button>
+  <br>
+  <button ion-button block  color="danger" (click)="sair()"><ion-icon name='arrow-back'></ion-icon> Sair</button>
   <br>
 </ion-content>

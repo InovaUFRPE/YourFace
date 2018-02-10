@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { ServiceProvider } from '../../providers/service/service';
+
 @IonicPage()
 @Component({
   selector: 'page-listar-professor',
@@ -10,24 +10,20 @@ import 'rxjs/add/operator/map';
 export class ListarProfessorPage {
   items: any;
   lista: any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public http: Http) {
-    this.inicializaLista()
-  }
+    public restProvider: ServiceProvider) {this.inicializaLista();}
+
   inicializaLista() {
-    this.http.get('http://localhost:3000/professor').map(res => res.json())
-      .subscribe(res => {
-        console.log(res)
-        this.lista = res;
-        if (res[0] != null) {
-          this.initializeItems();
-        }
-      }, (error) => {
-        console.error("erro " + error);
-      });
+    this.restProvider.getApi('professores').then(data => {
+      this.lista = JSON.parse(data['_body']);
+      if (this.lista[0]!= null) {
+        this.initializeItems();
+      }
+    });
   }
 
   initializeItems() {
@@ -70,21 +66,20 @@ export class ListarProfessorPage {
         {
           text: 'Deletar',
           handler: data => {
-            console.log('Deletar clicked');
-
-            this.http.delete('http://localhost:3000/professor/' + data.cpf + '/delete').map(res => res.json())
-              .subscribe(res => {
-                console.log(res)
-                this.inicializaLista();
-              }, (error) => {
-                console.error("erro " + error);
-              });
+            this.restProvider.deleteApi('professores/' + data.cpf).then(data => {
+              this.inicializaLista();
+            }, (err) => {
+              console.log(err);
+            });
           }
         }
       ]
     });
     prompt.present();
   }
+
+
+
   editarUser(user) {
     let prompt = this.alertCtrl.create({
       title: 'Edita Perfil',
@@ -104,6 +99,10 @@ export class ListarProfessorPage {
           placeholder: 'email',
           value: user.email
         },
+        {
+          name: 'password',
+          placeholder: 'password'
+        }
 
       ],
       buttons: [
@@ -117,19 +116,11 @@ export class ListarProfessorPage {
         {
           text: 'Salvar',
           handler: data => {
-            console.log('Saved clicked');
-            let params: any = {
-              name: data.name,
-              cpf: data.cpf,
-              email: data.email,
-            }
-            this.http.put('http://localhost:3000/professor/update', data).map(res => res.json())
-              .subscribe(res => {
-                console.log(data);
-                this.inicializaLista();
-              }, (error) => {
-                console.log("erro " + error);
-              });
+            this.restProvider.putApi('professores/'+data.cpf, data).then((result) => {
+              this.inicializaLista();
+            }, (err) => {
+              console.log(err);
+            });
           }
         }
       ]

@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-navbar color="primary">
-    <ion-title>Editar/Remover Professor</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+      <ion-title>Editar/Remover</ion-title>
+    </ion-navbar>
   <ion-toolbar color="primary">
     <ion-searchbar (input)="getItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let user of items">
+  <ion-list *ngFor="let user of items ">
     <ion-item-sliding>
       <ion-item>
         <ion-avatar item-start>
@@ -22,7 +22,7 @@
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="deletarUser(user)">Deletar</button>
       </ion-item-options>
-
+      
       <ion-item-options side="left">
         <button ion-button color="secondary" (click)="editarUser(user)">Editar</button>
       </ion-item-options>

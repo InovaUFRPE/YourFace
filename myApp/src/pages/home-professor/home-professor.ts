@@ -1,6 +1,11 @@
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { LoginPage } from '../login/login';
+
+import { AbrirTurmaProfessorPage } from '../abrir-turma-professor/abrir-turma-professor';
+import { DisciplinaProfessorPage } from '../disciplina-professor/disciplina-professor';
+
+import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
@@ -8,21 +13,24 @@ import { LoginPage } from '../login/login';
   templateUrl: 'home-professor.html',
 })
 export class HomeProfessorPage {
+  cpfProf: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.cpfProf = this.navParams.get("cpf");
   }
- 
- /* abrirRelatorio() {
-    this.navCtrl.push()
-  } */
 
+  goToChamadaPage() {
+    ///abrirAta:idturma
+    this.navCtrl.push(AbrirTurmaProfessorPage,{cpf:this.cpfProf});
+  }
+  goToFrequenciaPage() {
+    this.navCtrl.push(DisciplinaProfessorPage,{tipo:'A',prof:this.cpfProf});
+  }
+  abrirRelatorio() {
+    this.navCtrl.push(DisciplinaProfessorPage,{tipo:'B',prof:this.cpfProf});
+  }
   sair() {
-    this.navCtrl.setRoot(LoginPage)
+    localStorage.clear();
+    this.navCtrl.setRoot(IntroPage);
   }
-
- /* listarAlunos() {
-    this.navCtrl.push(ListarTurmaPage)
-  }
-*/
 }
-

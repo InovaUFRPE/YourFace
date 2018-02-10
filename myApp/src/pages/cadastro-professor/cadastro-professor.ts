@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -10,7 +9,6 @@ import 'rxjs/add/operator/map';
   templateUrl: 'cadastro-professor.html',
 })
 export class CadastroProfessorPage {
-
   public dados = {
     nomeUsuario: null,
     cpf: null,
@@ -19,6 +17,7 @@ export class CadastroProfessorPage {
     email: null,
     emailConf: null
   };
+
   TestaCPF(strCPF) {
     let Soma;
     let Resto;
@@ -44,7 +43,7 @@ export class CadastroProfessorPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCadastroCtrl: AlertController,
-    public http: Http) {
+    public restProvider: ServiceProvider) {
   }
   fazerCadastroProfessor(): boolean {
     // Pega as informações do usuário
@@ -60,7 +59,7 @@ export class CadastroProfessorPage {
       return;
     }
     if (cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -93,11 +92,14 @@ export class CadastroProfessorPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf) == false) {
-      alert('Cpf inválido.');
-      return;
-    }
-
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
+    //if (cpf.lenght != 4) {
+    //  alert('Matrícula inválida.');
+    //  return;
+   //}
     // Cria o objeto usuario e o cadastro no BD
     var usuarioProfessor: object = {
       name: nomeUsuario,
@@ -105,26 +107,18 @@ export class CadastroProfessorPage {
       password: senha,
       email: email
     };
-    this.http.post('http://localhost:3000/professor/create', usuarioProfessor).map(res => res.json())
-      .subscribe(res => {
-        console.log(res);
-        if (res.error) {
-          console.log(usuarioProfessor)
-          this.showAlertErro()
-        } else {
-          this.showAlert()
-          this.navCtrl.setRoot(HomePage);;
-        }
-      }, (error) => {
-        console.log(usuarioProfessor)
-        console.log("erro " + error);
-      });
+    this.restProvider.postApi('professores', usuarioProfessor).then((result) => {
+      console.log(result);
+      this.showAlert();
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      this.showAlertErro();
+    });
   }
-
   goToHomePage2() {
     this.navCtrl.push(HomePage);
   }
-
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',
@@ -133,14 +127,12 @@ export class CadastroProfessorPage {
     });
     alert.present();
   }
-
   showAlertErro() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro não realizado.',
-      subTitle: 'Algun campo no cadastro está errado e/ou cpf já cadastrado.',
+      subTitle: 'Algum campo no cadastro está errado e/ou Matrícula já cadastrada.',
       buttons: ['OK']
     });
     alert.present();
   }
-
 }

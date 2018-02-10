@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
-import { Camera, CameraOptions } from "@ionic-native/camera";
-
+import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
@@ -12,7 +9,7 @@ import { Camera, CameraOptions } from "@ionic-native/camera";
   templateUrl: 'cadastro-aluno.html',
 })
 export class CadastroAlunoPage {
-  foto: any;
+
   public dados = {
     name: null,
     cpf: null,
@@ -20,34 +17,14 @@ export class CadastroAlunoPage {
     emailConf: null,
     curso: null,
     dataNascimento: null,
+    password: null,
+    passwordConf: null
   };
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCadastroCtrl: AlertController,
-    public camera: Camera,
-    public http: Http) {
-  }
-  getPhoto(type) {
-    const options: CameraOptions = {
-      quality: 50,
-
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE,
-      sourceType: type == "picture" ? this.camera.PictureSourceType.CAMERA : this.camera.PictureSourceType.SAVEDPHOTOALBUM,
-      correctOrientation: true,
-      targetHeight: 400,
-      targetWidth: 400
-    };
-
-    this.camera.getPicture(options).then((imageData) => {
-
-      this.foto = 'data:image/jpeg;base64,' + imageData;
-
-    }, (err) => {
-      // Handle error
-    });
+    public restProvider: ServiceProvider) {
   }
 
   TestaCPF(strCPF) {
@@ -71,21 +48,30 @@ export class CadastroAlunoPage {
     return true;
   }
 
+  testeMatricula(strCPF){
+    if (strCPF.lenght == 4) return true;
+
+    return false;
+
+  }
+
   cadastrarEstudante() {
-    console.log(this.foto);
+
     var name = this.dados.name;
     var cpf = this.dados.cpf;
     var email = this.dados.email;
     var emailConf = this.dados.emailConf;
     var curso = this.dados.curso;
     var dataNascimento = this.dados.dataNascimento;
+    var senha = this.dados.password;
+    var SenhaConf = this.dados.passwordConf;
 
     if (name == undefined) {
       alert('O login é um campo obrigatório.');
       return;
     }
     if (cpf == undefined) {
-      alert('O CPF é um campo obrigatório.');
+      alert('A Matrícula é um campo obrigatório.');
       return;
     }
     if (email == undefined) {
@@ -100,10 +86,16 @@ export class CadastroAlunoPage {
       alert('E-mails não são iguais.');
       return;
     }
-    if (this.TestaCPF(cpf) == false) {
-      alert('Cpf inválido.');
-      return;
-    }
+    //if (this.TestaCPF(cpf) == false) {
+      //alert('Cpf inválido.');
+      //return;
+    //}
+
+    //if (this.testeMatricula(cpf) == false){
+
+      //alert('ooooo inválida.');
+     // return;
+    //}
     if (curso == undefined) {
       alert('O campo curso/série é um campo obrigatório.');
       return;
@@ -111,7 +103,27 @@ export class CadastroAlunoPage {
     if (dataNascimento == undefined) {
       alert('O campo idade é um campo obrigatório.');
       return;
+    }if (senha == undefined) {
+      alert('A senha é um campo obrigatório.');
+      return;
     }
+    if (SenhaConf == undefined) {
+      alert('A senha de confimação é um campo obrigatório.');
+      return;
+    }
+    if (senha.length < 8) {
+      alert('A senha deve ter pelo menos "8" caracteres.');
+      return;
+    }
+
+    if (senha !== SenhaConf) {
+      alert('As senhas não são iguais.')
+      return;
+    }
+
+
+
+
 
     // Cria o objeto usuario e o cadastro no BD
     var usuarioEstudante: object = {
@@ -119,22 +131,17 @@ export class CadastroAlunoPage {
       cpf: cpf,
       email: email,
       curso: curso,
-      dataNascimento: dataNascimento
-
+      dataNascimento: dataNascimento,
+      password: senha,
     };
-    this.http.post('http://localhost:3000/alunos/create', usuarioEstudante).map(res => res.json())
-      .subscribe(res => {
-        console.log(res);
-        if (res.error) {
-          console.log(usuarioEstudante)
-          this.showAlertErro()
-        } else {
-          this.showAlert()
-          this.navCtrl.setRoot(HomePage);;
-        }
-      }, (error) => {
-        console.log("erro " + error);
-      });
+
+    this.restProvider.postApi('alunos', usuarioEstudante).then((result) => {
+      this.showAlert();
+      this.navCtrl.setRoot(HomePage);
+    }, (err) => {
+      console.log(err);
+      this.showAlertErro();
+    });
   }
 
   goToHomePage2() {
@@ -144,7 +151,7 @@ export class CadastroAlunoPage {
   showAlert() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro realizado com sucesso!',
-      subTitle: 'Parabéns por cadastra um ESTUDANTE muito importante para sua instituiçao!',
+      subTitle: 'Parabéns por cadastrar um ESTUDANTE! Muito importante para sua instituiçao!',
       buttons: ['OK']
     });
     alert.present();
@@ -152,10 +159,9 @@ export class CadastroAlunoPage {
   showAlertErro() {
     let alert = this.alertCadastroCtrl.create({
       title: 'Cadastro não realizado !',
-      subTitle: 'Algun campo no cadastro está errado e/ou cpf já cadastrado.',
+      subTitle: 'Algum campo no cadastro está errado e/ou Matrícula já cadastrada.',
       buttons: ['OK']
     });
     alert.present();
   }
-
 }
