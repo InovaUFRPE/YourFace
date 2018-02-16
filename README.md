@@ -5,3 +5,13 @@ Pensou em segurança escolar, pensou em YourFace! Já teve ou teme problemas com
 YourFace é um sistema que utiliza as câmeras já instaladas na sua escola para alertar sua divisão de segurança caso algum desconhecido seja detectado no seu colégio. Chega de ter câmeras para ver se algo aconteceu, tenha câmeras para impedir que algo aconteça de fato!
 
 O YourFace ainda conta com um aplicativo para Android e iPhone que pode ser utilizado por alunos, professores e por você! Isso por que ele detecta faces de alunos e automaticamente já põe presença ou falta para que o aluno tenha feedback completo sobre suas ausências. O coordenador tem acesso a um relatório de frequência, tanto de alunos quanto de professores! É o controle total da sua escola na palma de sua mão, é YourFace!
+
+## Imagens
+
+![Estudantes](https://www.emprestimoconsignado.com.br/wp-content/imagens/40a01bc61e688a4090d4396493b598ef.jpg)
+
+Estudantes na escola X
+
+![Reconhecimento facial](http://saudebusiness.s3.amazonaws.com/wp-content/uploads/2017/09/reconhecimento-facial.jpg)
+
+Reconhecimento facial do YourFace
