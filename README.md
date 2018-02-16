@@ -1,9 +1,6 @@
-# YourFace
-Sistema automatizado de segurança e gestão de frequência escolar através reconhecimento facial.
+Pensou em segurança escolar, pensou em YourFace! Já teve ou teme problemas com gente desconhecida entrando na sua escola? YourFace é um sistema de segurança escolar que utiliza reconhecimento facial para assegurar que nenhum desconhecido passará em branco pela sua escola!
 
 * * *
-
-Pensou em segurança escolar, pensou em YourFace! Já teve ou teme problemas com gente desconhecida entrando na sua escola? YourFace é um sistema de segurança escolar que utiliza reconhecimento facial para assegurar que nenhum desconhecido passará em branco pela sua escola!
 
 YourFace é um sistema que utiliza as câmeras já instaladas na sua escola para alertar sua divisão de segurança caso algum desconhecido seja detectado no seu colégio. Chega de ter câmeras para ver se algo aconteceu, tenha câmeras para impedir que algo aconteça de fato!
 
