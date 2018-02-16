@@ -8,9 +8,9 @@ O YourFace ainda conta com um aplicativo para Android e iPhone que pode ser util
 
 ## Imagens
 
-![Estudantes](https://www.emprestimoconsignado.com.br/wp-content/imagens/40a01bc61e688a4090d4396493b598ef.jpg)
+![Reconhecimento facial de aluno](reconhecimento-facial-erico.jpg)
 
-Estudantes na escola X
+YourFace reconhecendo o aluno Erico.
 
 ![Reconhecimento facial](http://saudebusiness.s3.amazonaws.com/wp-content/uploads/2017/09/reconhecimento-facial.jpg)
 
