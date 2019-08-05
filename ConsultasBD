@@ -1,0 +1,55 @@
+//cadastrar aluno
+INSERT INTO tb_aluno (name,curso,dataNascimento,ativo,cpf,email) VALUES ([string_nome],[string_curso], DATE([string_data formato:'2003-12-31']),1,[string_cpf], [string_email])
+
+//cadastrar coordenador
+INSERT INTO tb_coord (name,cpf,password,ativo,email) VALUES ([string_nome],[string_cpf], [string_password],1,[string_email])
+
+//cadastrar professor
+INSERT INTO tb_prof (name,password,ativo,cpf,email) VALUES ([string_nome],[string_password],1,[string_cpf],[string_email])
+
+//pesquisar
+SELECT * FROM [tabela] WHERE cpf = [string_cpf] and ativo = 1
+
+//alterar aluno
+UPDATE tb_aluno SET name = [string_nome], curso = [string_curso], dataNascimento = DATE([string_data formato:'2003-12-31']), email = [string email] WHERE cpf = [string_cpf]
+
+//alterar coordenador/professor
+UPDATE [tabela] SET name = [string_nome], password = [string_password], email = [string email] WHERE cpf = [string_cpf]
+
+//desativar
+UPDATE [tabela] SET ativo = 2 WHERE cpf = [string_cpf]
+
+//pegar id aluno
+SELECT idaluno FROM tb_aluno WHERE cpf= [string_cpf]
+
+//pegar id professor
+SELECT idprofessor FROM tb_prof WHERE cpf= [string_cpf]
+
+//criar turma
+INSERT INTO tb_turmas (nome_turma,professor_turma) VALUES ([string nome da turma],[id_professor])
+
+//pegar id da turma
+SELECT idturma FROM tb_turmas WHERE nome_turma= [string_nome da turma]
+
+//pegar todas as turmas ATIVAS
+SELECT * FROM tb_turmas WHERE ativo = 1
+
+//inserir aluno na turma
+INSERT INTO tb_turmas_alunos (turma,aluno) VALUES ([id_turma],[id_aluno])
+
+//pegar lista de ids de alunos da turma
+SELECT aluno FROM tb_turmas_alunos WHERE turma=[id_turma]
+
+//inserir frequencia com presenca
+INSERT INTO tb_freq (data,turma_freq,aluno_freq) VALUES ([data],[id_turma],[id_aluno])
+
+//inserir frequencia com falta
+INSERT INTO tb_freq (data,turma_freq,aluno_freq,presenca) VALUES ([data],[id_turma],[id_aluno],2)
+
+/*
+TUDO QUE FOR:
+DATA - FORMATO 'AAAA-MM-DD'
+ATIVO - 1 = TRUE / 2 = FALSE
+STRINGS - 'CONTEUDO'
+IDs - INT
+*/
